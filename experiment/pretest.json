@@ -2,37 +2,58 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the primary function of the incremental encoder in this project?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "To provide a continuous analog signal.",
+        "b": "To generate digital pulses for speed measurement.",
+        "c": "To act as a variable resistor.",
+        "d": "To provide a static position reading."
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Why is a hardware interrupt used in this project?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "To control the brightness of the LCD.",
+        "b": "To stop the motor when a certain RPM is reached.",
+        "c": "To accurately count pulses without missing any at high speeds.",
+        "d": "To provide a constant voltage to the motor."
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the main role of the Op-Amp and NPN transistor in your circuit?",
+      "answers": {
+        "a": "To provide power to the Arduino.",
+        "b": "To decrease the motor’s speed.",
+        "c": "To condition and amplify the weak encoder signal.",
+        "d": "To act as a voltage divider."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the relationship between the number of pulses and the calculated RPM in your code?",
+      "answers": {
+        "a": "They are inversely proportional.",
+        "b": "RPM is the number of pulses multiplied by 3.",
+        "c": "RPM is the number of pulses divided by 2.",
+        "d": "There is no direct relationship."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Why is the 12V DC motor connected to a separate 12V power supply instead of the Arduino's 5V pin?",
+      "answers": {
+        "a": "The motor's voltage and current requirements are higher than what the Arduino can provide.",
+        "b": "The motor will run faster on a separate power supply.",
+        "c": "The separate power supply is used for safety purposes.",
+        "d": "The motor will damage the Arduino if connected to its 5V pin."
+      },
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
