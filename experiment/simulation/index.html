@@ -1,13 +1,433 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+<head>
+<title> Encoder </title>
+<meta charset="ISO-8859-1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" > -->
+    <link rel="stylesheet" href=" https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/mainPage.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/encoder.css">
+	<link rel="stylesheet" href="css/mimicStyle.css">
+<link rel="stylesheet" href="css/result.css">
+</head>
+<style>
+ .digital-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #00ff00;
+      background-color: #000;
+      padding: 10px;
+      letter-spacing: 2px;
+    }
+.background-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rectangle1 {
+     position: absolute;
+    top: 36%;
+    left: 8%;
+    width: 66px;
+    height: 29px;
+    background-color: #dae5e9;
+    border:2px solid #000;
+    color: #000;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border-radius: 8px;
+    }
+    .rectangle2 {
+     position: absolute;
+    top: 41%;
+    left: 8%;
+    width: 66px;
+    height: 29px;
+    background-color: #dae5e9;
+    border:2px solid #000;
+     color: #000;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border-radius: 8px;
+    }
+     .rectangle3 {
+     margin-top:2px;
+     position: absolute;
+    top: 67%;
+    left: 70%;
+    width: 280px;
+    height: 33px;
+    background-color: #3b6aba;
+    border:2px solid #000;
+    color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+/*   border-radius: 8px; */
+    }
+      .rectangle4 {
+      margin-top:4px;
+     position: absolute;
+    top: 71%;
+    left: 70%;
+    width: 280px;
+    height: 33px;
+    background-color: #3b6aba;
+    border:2px solid #000;
+    color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+/*   border-radius: 8px; */
+    }
+
+    .overlay-img1 {
+      position: absolute;
+      bottom: 20px;
+      top:61%;
+      right: 85%;
+      width:15px;
+      
+       
+/*       border: 2px solid #000; */
+    }
+   .disc {
+      position: absolute;
+      bottom: 20px;
+      top:18%;
+      right: 64%;
+      width:100px;
+      
+       animation: spin linear infinite; 
+  
+    }
+    
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .overlay-img2 {
+      position: absolute;
+      bottom: 20px;
+      top:61%;
+      right: 78%;
+        width:15px;
+/*       border: 2px solid #000; */
+    }
+    .b1{
+     position: absolute;
+      font-size:12px;
+      top:57%;
+      right: 78%;
+    }
+     .b2{
+     position: absolute;
+      font-size:12px;
+      top:50%;
+      right: 70%;
+    }
+     .b3{
+     position: absolute;
+      font-size:12px;
+      top:72%;
+      right: 70%;
+    }
+    .b4{
+     position: absolute;
+      font-size:12px;
+      top:32%;
+      right: 83%;
+    }
+    .b5{
+     position: absolute;
+      font-size:12px;
+      top:47%;
+      right: 89%;
+    }
+    .b6{
+     position: absolute;
+      font-size:12px;
+      top:47%;
+      right: 84%;
+    }
+     .b7{
+     position: absolute;
+      font-size:12px;
+      top:57%;
+      right: 15%;
+    }
+    
+    
+        
+</style>
+
+<body  >
+
+<header>
+		<img class="COEPLogo" src='images/COEPlogo.png' />
+		<img class="VlabLogo" src='images/vlablogo.jpg' />
+		<span id="colgName">COEP TECHNOLOGICAL UNIVERSITY PUNE</span>		
+		
+	</header>
+<!-- 	<div class="row container-fluid" > -->
+<!-- 	<div  class="col-sm-12" >       -->
+	
+<!-- 	<button class="btn btn-danger btn1" id="saveAsJpg" hidden><b>Download result</b></button> -->
+<!-- 	 <button type="button" id="simDemo" class="btn btn-danger btn1" data-toggle="modal" data-target="#readProcedureModal1" ><b>Simulation Demo</b> </button> -->
+<!-- 	<button class="btn btn-danger button1 btn1" id="procedure" data-toggle="modal" data-target="#myModalRow"><b>Procedure</b></button> -->
+	
+<!-- 	</div> -->
+<!-- 	</div> -->
+	
+	
+
+<div id="readProcedureModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog  modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title mdltitle" ><center>DEMO</center></h3>
+<!--         <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+      <div class="modal-body12">
+ 
+<!--     <video width="90%" id="simVideo" controls> -->
+<!--   <source src="images/simulation.mp4" type="video/mp4"> -->
+  
+<!-- </video> -->
+
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModalRow">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">PROCEDURE </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="color:#682624;">
+      Attempt all questions<br/>
+       Step 1 : Select number of holes on the disc<br>
+       Step 2 : Select speed from drop-down menu<br> 
+       Step 3 : Calculate pulses for selected speed<br>
+       Step 4 : Repeat steps 1 to 3 for different 5 readings <br>
+        Step 5 : Go to next level<br>
+        Step 6 : Click on start button and set RPM <br>
+        Step 7 : Observe the pluses then click on take reading button and calculate accuracy (%) <br>
+        Step 8 : Repeat steps 6 and 7 for different 5 readings <br>
+         Step 9 : Go to next level and observe graph<br>
+         
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+	<div  class="row typeSelector" id="selectionOfType" hidden>
+	<div  class="col-sm-2">
+<!-- 	 <label for="sel1">Select list (select one):</label> -->
+	 </div>
+	<div  class="col-sm-2">
+	 <label for="sel1">SELECT TACHOMETER TYPE</label>
+	 </div>
+	
+     <div  class="col-sm-5"> 
+      <select class="form-control" id="typetacho"  >
+        <option value="0">--- Select Tachometer Type --- </option>
+	   <option value="1">Photoelectric Tachometer</option>
+	  <option value="2">Toothed Rotor Variable Reluctance Tachometer</option>
+<!-- 	   <option value="40">Ring type load cell</option> -->
+      </select>
+      </div>
+      <div  class="col-sm-2">
+	 <span for="sel1" id="error"></span>
+	 </div>
+      
+    
+      </div>
+<div  class="row container-fluid" id="main-div1" style="margin-top: -24px;">
+	<div class="col-lg-8" id="main-div" style="font-family: Verdana, sans-serif;margin-bottom: 20px;">
+				<div class="panel panel-primary">
+	      			<div class="panel-heading " id="panelHeading1">
+	      			<center id="centerText1" class="panelHeadingBold"> Simulation </center>
+	      			</div>
+	      			
+	     			<div class="panel-body" id="main-div-conf" >
+	     			<img src="images/EncoderImg.png" class="img-fluid background-img" >
+	     			<img src="images/disc2.png" alt="disc" class="disc" id="disc1">
+ 
+					    <!-- Rectangle Overlay -->
+					    <div class="rectangle1 digital-text " id="display">12.0V</div>
+					     <div class="rectangle2 digital-text" id="display1">00mA</div>
+					 <div class="rectangle3 digital-text" id="rpmDisplay">00.00</div>
+					     <div class="rectangle4 digital-text" id="pDisplay">00.00</div>
+					
+					    <!-- Image Overlay -->
+					    <img src="images/plusresize.png" id="plus" alt="Overlay" class="overlay-img1">
+					      <img src="images/minusresize.png" id="minus" alt="Overlay" class="overlay-img2">
+					      <b class="b1">Potentiometer</b>
+					      <b class="b2">NPN transistor(2N2222)</b>
+					       <b class="b3">OP-AMP IC741</b>
+					       <b class="b4">12V Power supply</b>
+					       <b class="b5">(+ve)</b>
+					       <b class="b6">(-ve)</b>
+					       <b class="b7">LCD Display(I2C)</b>
+	     			</div>
+	      			</div>
+	   	</div>
+	   
+	   
+			<div class="col-lg-4" id="canvas">
+	             <div class="panel panel-primary" >
+	      			<div class="panel-heading " id="panelHeading2" >
+	      			<center id="centerText2" class="panelHeadingBold">Inputs</center>
+	      			</div>
+	      			
+	      			<div class="panel-body" id="canvas-div">
+	      			
+	      			
+	      			</div>
+	      		
+	      		</div>
+	       </div>
+	</div>
+	<div  class="container-fluid resultMainPage" id="main-divResult" style="margin-bottom:60px;margin-top:30px" hidden>
+
+	</div>
+	<footer>
+Copyrights &copy; COEPTECH - Virtual Labs
+</footer>
 </body>
+
+<!-- https://code.jquery.com/jquery-3.5.1.js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+<script type="text/javascript" src="lib/raphael.js"></script>
+<script type="text/javascript" src="lib/raphael.min.js"></script>
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+ 
+ 
+  <script type="text/javascript" src="src/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript" src="src/questionJson.js"></script>
+<script type="text/javascript" src="src/questions.js"></script>
+<script type="text/javascript" src="src/Inputs.js"></script>
+<script type="text/javascript" src="src/mainPage.js"></script>
+
+<script type="text/javascript" src="src/application.js"></script>
+
+<script type="text/javascript" src="src/compareGraph.js"></script>
+<script type="text/javascript" src="src/result.js"></script>
+<!-- <script type="text/javascript" src="src/resultAnaylsis.js"></script> -->
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<script>
+$(document).ready(function() {
+    // Select the image
+    
+});
+
+
+
+function isAlphabetical(input) {
+    return /^[A-Za-z]+$/.test(input);
+}
+$('#readProcedureModal1').click(function(){
+
+	 $('video').each(function(){
+		    $(this).get(0).pause();
+		  })
+	})
+$("#procedure").on("click", function(){
+$("body").css("padding","0px");
+});
+$("#simDemo").on("click", function(){
+	$("body").css("padding","0px");
+	var video = document.getElementById("simVideo");
+
+	// Define the start and end skip times (in seconds)
+	var skipStart = 2;  // Skip the first 5 seconds
+	var skipEnd = 5;    // Skip the last 5 seconds
+
+// 	video.onloadedmetadata = function() { 
+	    // Get the duration of the video
+	    var videoDuration = video.duration;
+
+	    // Ensure the video plays between skipStart and (duration - skipEnd)
+	    video.currentTime = skipStart;
+
+	    // Event listener to pause the video when it reaches the end limit (video duration - skipEnd)
+	    video.ontimeupdate = function() {
+	        if (video.currentTime >= videoDuration - skipEnd) {
+	            video.pause();
+				video.currentTime = skipStart;
+	        }
+	    };
+
+	    // Prevent seeking outside the allowed time range
+	    video.addEventListener('seeking', function(event) {
+	        // If seeking before the start time or after the allowed end time, reset the current time
+	        if (video.currentTime < skipStart) {
+	            video.currentTime = skipStart;
+	        } else if (video.currentTime > videoDuration - skipEnd) {
+	            //video.currentTime = videoDuration - skipEnd;
+				video.currentTime = skipStart;
+	        }
+	    });
+// 	};
+	
+	video.play();
+})
+</script>
 </html>
