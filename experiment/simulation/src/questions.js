@@ -1,8 +1,18 @@
-	resultMasterJson ={};
 	
+	$(function() {
+		showQuestions = function() {
+		
 			var flag = false;
 			var myRadio = null;
 			dataQues = {};
+			timerMasterJson.mimic = $("#counter").text();
+			seconds = 0;
+			 updateCounter();
+			 $("#centerText1").html('QUESTIONS');
+
+			$("#canvas-div").html('');
+			
+				
 
 			var questions = '';
 			questions += ''
@@ -40,41 +50,16 @@
 			}
 
 			questions += '<div class="buttonDiv">'
-				+ '<button  class="btn btn-danger" id="testSubmit" data-toggle="modal" data-target="#myModal" >Submit Test</button>'
+				+ '<button  class="btn btn-danger" id="testSubmit" >Submit Test</button>'
 				
 				
 //				+ '<button id="mimicSubmit" class=" btn btn-danger nextLevelBtn" hidden>Next Level</button>'
-
-				+ ' <!-- Modal -->'
-				+ '<div class="modal fade" id="myModal" role="dialog">'
-				+ ' <div class="modal-dialog modal-md">'
-				+ '    <div class="modal-content">'
-				+ '     <div class="modal-header">'
-				
-				+ '       <h4 class="modal-title">Message box</h4>'
-				+ '       <button type="button" class="close" data-dismiss="modal" style="color:#fff;">&times;</button>'
-				+ '     </div>'
-				+ '     <div class="modal-body">'
-				+ '       <p id="modelMsg">This is a small modal.</p>'
-				+ '     </div>'
-				+ '     <div class="modal-footer">'
-				+ '       <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnNext" >NEXT</button>'
-				+ '     </div>'
-				+ '   </div>'
-				+ ' </div>'
-				+ '</div>'
-				
-				+ '</div>'
-				+ ' </div>'
-
-				
+		
 				
 		
 
 			$("#canvas-div").html(questions);
 
-
-			var flg = false;
 			$('#testSubmit').on('click', function() {		
 				$("body").css("padding","0px 0px 0px 0px");
 					var arr = [];
@@ -93,9 +78,10 @@
 
 						if (myRadio == null) {
 							flag = flag && false;
-							//alert('Please attempt all the questions');
+							showSwal("Please attempt all the questions","warning");
+						
 							$("body").css("padding","0px");
-							$("#modelMsg").html("<b class='boldTextRed'>Please attempt all the questions.</b>");
+							
 							break;
 						}
 						arr.push({
@@ -114,28 +100,23 @@
 							}
 						}
 						
-//					 
-//						 $("#modelMsg").html("<b class='boldTextGreen'>Test Submitted Successfully ");
-
-						$("#modelMsg").html("<b class='boldTextGreen'>Test submitted successfully .<br/> Correct answers are : " + ansCount + "</b>");
-						flg = true;
-						$("body").css("padding","0px 0px 0px 0px");
-						$("#centerText1").html("CONFIGURATION");
-//						selectDesign();
-						tempJson={};
-						tempJson.correctQuestion=ansCount;
-						resultMasterJson.question=tempJson;
-						//console.log(resultMasterJson);
+						 resultJson.questions = ansCount;
+//						 console.log(data);
+						 
+//						 $("#modelMsg").html("<b class='boldTextGreen'>Test Submitted Successfully . Correct Answers Are : " + ansCount+"</b>");
+//						alert("Test Submitted Successfully . Correct Answers Are : " + ansCount);
+						showSwal('Test Submitted Successfully','info');
+						
+						result();
+						
+						
 		   					
 					}
 
 						
 			});
 			
-			$("#btnNext").click(function(){
-				if(flg == true){
-					config1();
-				}
-			})
-			
-	
+		
+			}
+				
+	});

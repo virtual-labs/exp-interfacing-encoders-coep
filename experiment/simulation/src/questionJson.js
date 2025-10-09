@@ -6,38 +6,38 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "What type of light source is used in a photoelectric tachometer?",
+					"QC": "When a switch is said to be press-to-high, it means:",
 					"ANS": [{
-						"ANSID": false,
-						"content": " Infrared"
-					}, {
-						"ANSID": false,
-						"content": " Ultraviolet"
-					}, {
 						"ANSID": true,
-						"content": " Laser"
+						"content": "Output goes HIGH when switch is pressed"
+					}, {
+						"ANSID": false,
+						"content": "Output goes LOW when switch is pressed"
+					}, {
+						"ANSID": false,
+						"content": "LED always glows when pressed"
 					},{
 						"ANSID": false,
-						"content": " Any visible light source"
+						"content": "Output stays floating"
 					}]
 				}]
 			}, {
 
 				"QUES": [{
 					
-					"QC": "Where is the opaque disc mounted in a photoelectric tachometer?",
+					"QC": "In a press-to-low switch, pressing the switch will:",
 					"ANS": [{
 						"ANSID": false,
-						"content": " On the sensor"
-					}, {
-						"ANSID": false,
-						"content": " On the light source"
+						"content": "Pull the signal to Vcc"
 					}, {
 						"ANSID": true,
-						"content": " On the shaft whose speed is to be measured"
+						"content": "Pull the signal to GND"
 					}, {
 						"ANSID": false,
-						"content": " Inside the electronic counter"
+						"content": "Keep output floating"
+					}, {
+						"ANSID": false,
+						"content": "Toggle LED automatically"
 					}]
 					
 				}]
@@ -45,21 +45,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "What is the main function of the holes on the opaque disc in a photoelectric tachometer?",
-
-
+					"QC": "A sourcing input requires the external device to:",
 					"ANS": [{
 						"ANSID": true,
-						"content": " To allow light to pass through intermittently"
+						"content": "Sink current"
 					}, {
 						"ANSID": false,
-						"content": " To provide weight balance for the disc"
+						"content": "Source current"
 					}, {
 						"ANSID": false,
-						"content": " To increase speed of rotation"
+						"content": "Toggle voltage"
 					}, {
 						"ANSID": false,
-						"content": " To store energy"
+						"content": "Switch polarity"
 					}]
 					
 				}]
@@ -67,19 +65,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "What happens when the opaque portion of the disc is aligned between the light source and the sensor?",
+					"QC": "A sinking input requires the external device to",
 					"ANS": [{
 						"ANSID": false,
-						"content": " A pulse is generated "
+						"content": "Float the voltage"
 					}, {
 						"ANSID": true,
-						"content": " The output is zero"
+						"content": "Source current"
 					}, {
 						"ANSID": false,
-						"content": " The sensor produces a continuous signal"
+						"content": "Provide resistance"
 					}, {
 						"ANSID": false,
-						"content": "The disc stops rotating"
+						"content": "Pull to ground only"
 					}]
 					
 				}]
@@ -87,21 +85,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "The pulse rate in a photoelectric tachometer depends on which two factors?",
-
-
+					"QC": "In a sourcing output, the current flows:",
 					"ANS": [{
 						"ANSID": false,
-						"content": " Number of holes and gating period"
+						"content": "From load to output"
 					}, {
 						"ANSID": false,
-						"content": " Speed of rotation and light intensity"
+						"content": "Only to ground"
 					}, {
 						"ANSID": true,
-						"content": " Number of holes on the disc and speed of rotation"
+						"content": "From output to load"
 					}, {
 						"ANSID": false,
-						"content": " Sensor sensitivity and gating period"
+						"content": "Only to Vcc"
 					}]
 					
 				}]
@@ -109,19 +105,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "How is the rotational speed calculated in a photoelectric tachometer?",
+					"QC": "In a sinking output, the current flows:",
 					"ANS": [{
 						"ANSID": false,
-						"content": " By counting the continuous signals"
-					}, {
-						"ANSID": false,
-						"content": " By using a timer"
+						"content": "From Vcc into output directly"
 					}, {
 						"ANSID": true,
-						"content": " By measuring the frequency of pulses generated"
+						"content": "From load into the output and then to ground"
 					}, {
 						"ANSID": false,
-						"content": " By observing light intensity variations"
+						"content": "From output to Vcc"
+					}, {
+						"ANSID": false,
+						"content": "Between two outputs"
 					}]
 					
 				}]
