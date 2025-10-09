@@ -1,346 +1,348 @@
+function updateDateTime() {
+      const now = new Date();
+      const formatted = now.toLocaleString(); // e.g. "5/5/2025, 10:23:45 AM"
+      $('#dateTime').text(formatted);
+    }
+
+
+
 function result(){
-	$("#procedure,#result").prop("hidden",true);
-	$("#main-divResult,#saveAsJpg").prop("hidden",false);
+	console.log("result");
+	console.log(resultJson);
+	timerMasterJson.question=$("#counter").text();
+	console.log(timerMasterJson);
+	seconds = 0;
+	  updateCounter();
+	$("#simDemo,#procedure,#counter,#tagDetails,#refresh").prop("hidden",true);
+	$("#report").prop("hidden",false);
+//	$("#Header").html("<center><span >Inquiry, Quotation, Comparative statement, Purchase orders</span></center>");
+	$("#Header").prop("hidden", true);
+	
+//	var enqAdd =resultJson.flg+resultJson.flg3+resultJson.flg2+resultJson.flg4+resultJson.flg5;
+//	console.log(enqAdd);
+//		var enquiey1=parseFloat(enqAdd);
+//	var quatAdd = resultJson.Qflg1+resultJson.Qpflg1+
+//	resultJson.Qsvflg1+ resultJson.Qsflg1+resultJson.Qfflg1;
+//	console.log(quatAdd);
+//	
+//	
+//	var quat1=parseFloat(quatAdd);
+//	var piping=parseFloat((5/enqAdd)*100);
+//	var instr=parseFloat((15/quatAdd)*100);
+//	var comp = 100;
+//	var purchase = 100;
+//	var total = 0;
+	
+	var configCount = resultJson.configuration;
+	var mimicCount = resultJson.mimic;
+	var question = resultJson.questions;
+	
+	var configPer = parseFloat((1/configCount)*100);
+	var mimicPer = parseFloat((1/mimicCount)*100);
+	var quesPer = parseFloat((question/6)*100)
+	
 	htm=''
-		+'<div class="row" >'
-		+'<div class="col-sm-2">'
-		+'</div>'
-		+'<div class="col-sm-8 nameTitle" style="background-color:#304250">'
-		+'<span>'
-		+'<h3><center style="font-weight: bold;">TACHOMETER </center></h3>'
+	+'<div class="container-fluid">'
+	  +`<div class="row" id="divMis" style="background-color: #2e3539; padding: 10px; display: flex; justify-content: center;">
+  <div style="display: flex; align-items: center; gap: 10px; white-space: nowrap;">
+    <span style="color: white;font-weight: bold;">Enter Name:</span>
+    <input type="text" id="nameInput" style="color: #000; padding: 5px; max-width: 200px;">
+<label id="dateTime" style="color:#fff;"></label>
 
-		+'</span>'
-		+'</div>'
-		+'<div class="col-sm-2">'
-		+'</div>'
-		+'</div>'
-		
-		+'<div class="row">'
-		+'<div class="col-sm-3">'
-		+'</div>'
-		+'<div class="col-sm-6 " style="">'
-		+'<span>'
-		+'<h6><center style="font-weight: bold;border-style: dashed;" class="blink">Experiment completed successfully</center></h6>'
-//		+'<br><h6><center style="font-weight: bold;">Experiment completed .</center></h6>'
-		+'</span>'
-		+'</div>'
-		+'<div class="col-sm-1">'
-		+'</div>'
-		+'<div class="col-sm-2">'
-		+'   <p><b> Date: <span id="currentDate"></span></b></p>'
-		+'     <p><b> Time: <span id="currentTime"></span></b></p>'
-	   
-		+'</div>'
-		+'</div>'
-		
-		+'<div class="row">'
-		+'<div class="col-sm-1">'
-		+'</div>'
-		+'<div class="col-sm-10">'
-		+'</div>'
-		+'<div class="col-sm-1">'
-		+'</div>'
-		+'</div>'
-		+'<div class="row">'
-		+'<div class="col-sm-4">'
-		+'		 <table class="table table-bordered" style=" vertical-align: middle;">'
-		+'    <thead class="thead" style="background-color: #445f66;color: #fff;">'
-		+'      <tr>'
-		+'        <th>COMPETENCY ( TACHOMETER )</th>'
-		+'        <th>STATUS</th>'
+  </div>
+</div>`
+	+'<div class="container-fluid">'
+//	 +' <div class="row titlePart" id="" ><center><span >Inquiry, Quotation, Comparative statement, Purchase orders</span></center></div>' 
+	+' <!-- Title -->'
 
-
-		+'      </tr>'
-		+'    </thead>'
-		+'    <tbody>'
-		+'      <tr>'
-		+'        <td ><span class="stageLabel">Basic Knowledge</span></td>'
-		+'        <td id="basicKnowledge">'
-		
-		+'       </td>'
-		+'      </tr>'
-		+'      <tr>'
-		+'        <td><span class="stageLabel">Configuration</span></td>'
-		+'        <td id="config">'
-		
-		+'       </td>'
-		+'      </tr>'
-		+'      <tr>'
-		+'        <td><span class="stageLabel">Application</span></td>'
-		+'        <td id="application">'
-		
-		+'       </td>'
-		+'      </tr>'
-		+'      <tr>'
-		+'        <td><span class="stageLabel">Mimic </span></td>'
-		+'        <td >'
-		+'         <div class="alert alert-success attainedText">'
-	    +'         <center><strong>Attained</strong> </center>'
-	     +'       </div>'
-		+'       </td>'
-		+'      </tr>'
-		+'      <tr>'
-		+'        <td><span class="stageLabel">Observation</span></td>'
-		+'        <td>'
-		+'         <div class="alert alert-success attainedText">'
-	    +'         <center><strong>Attained</strong> </center>'
-	     +'       </div>'
-		+'       </td>'
-		+'      </tr>'
-		+'    </tbody>'
-		+'  </table>'
-		+'</div>'
-		+'<div class="col-sm-4" id="graphDiv" style="overflow: hidden;border-style: groove">'
-		
-		+'</div>'
-        +'<div class="col-sm-4">'
-        +' <div class="panel panel-default">'
-        +' <div class="panel-heading"><center><b style="color:#fff;">BASIC KNOWLEDGE</b></center></div>'
-        +' <div class="panel-body">'
-        +'<div class="row">'
-        +'<div class="col-sm-4">'
-//        +'<center><img src="images/vertical_line1.png"></img></center>'
-        +' <div class="panel panel-default">'
-        +' <div class="panel-heading"><center class="subTitle">Total Question</center></div>'
-        +'<div class="panel-body">'
-        +' <div class="alert alert-warning " >'
-        +' <center><strong>6</strong> </center>'
-        +'</div>'
-        +'</div>'
-        +' </div>'
-        +'</div>'
-        +'<div class="col-sm-4">'
-//        +'<center><img src="images/vertical_line1.png"></img></center>'
-        +' <div class="panel panel-default">'
-        +'  <div class="panel-heading"><center class="subTitle">Correct Answer</center></div>'
-        +'  <div class="panel-body">'
-        +' <div class="alert alert-success" >'
-        +' <center><strong>'+resultMasterJson.question.correctQuestion+'</strong> </center>'
-        +'</div>'
-       +'</div>'
-        +' </div>'
-        +'</div>'
-        +'<div class="col-sm-4">'
-//        +'<center><img src="images/vertical_line1.png"></img></center>'
-        +' <div class="panel panel-default">'
-        +' <div class="panel-heading "><center class="subTitle">Wrong Answer</center></div>'
-        +'  <div class="panel-body">'
-        +' <div class="alert alert-danger">'
-        +' <center><strong>'+parseInt(6-resultMasterJson.question.correctQuestion)+'</strong> </center>'
-        +'</div>'
-       +'</div>'
-        +' </div>'
-        +'</div>'
-        +'</div>'
-        +'</div>'
-        +' </div>'
-        +' </div>'
-		+'</div>'
-		+'</div>'
-		+'<br>'
-		+'<div class="row">'
-		+'<div class="col-sm-6" style="border-style: dashed;border-color: lightgray;">'
-		+'<h4><center class="appTitle"  ><b style="color:#fff;"> </b> <b style=" font-weight: 500; color: #e0ce97;">CONFIGURATION</b></center></h4>'
-		+'<div class="row">'
-		
-		+'<div class="col-sm-12">'
-		+'<h6><center class="appTitle" style="background-color:#4b4242;font-weight: bold;">Pulses calculation <b style=" font-weight: bold; color: #e0ce97;"></b></center></h6>'
-		+'</div>'
-		
-		+'</div>'
-		+'<div class="row">'
-		
-		+'<div class="col-sm-12">'
-		
-		+'<div class="panel panel-default">'
-		+' <div class="panel-body">'
-		
-		+'<div class="row">'
-		
-		+'<div class="col-sm-6">'
-		
-		+'<div class="panel panel-default" style="margin-top:0px;">'
-		+'<div class="panel-heading"><center class="subTitle">Expected Attempt</center></div>'
-		+' <div class="panel-body">'
-		   +' <div class="alert alert-success">'
-	        +' <center><strong>5</strong> </center>'
-	        +'</div>'
-		+'</div>'
-		+'</div>'
-		+'</div>'
-		+'<div class="col-sm-6">'
-		
-		+'<div class="panel panel-default" style="margin-top:0px;">'
-		+' <div class="panel-heading"><center class="subTitle">Total Attempt</center></div>'
-		+' <div class="panel-body">'
-		   +' <div class="alert alert-warning">'
-	        +' <center><strong>'+resultMasterJson.std.stdPulsesCount+'</strong> </center>'
-	        +'</div>'
-		+'</div>'
-		+' </div>'
-			
-		
-		+'</div>'
-		
-		+'</div>'
-		+'</div>'
-		
-		+' </div>'
-		+'</div>'
-		
-		
-		+'</div>'
-		+'</div>'
-		
-		
-		//Thickness Panel
-		
-		+'<div class="col-sm-6" style="border-style: dashed;border-color: lightgray;">'
-		+'<h4><center class="appTitle" style="font-weight: bolder;" > <b style=" font-weight: 500; color: #e0ce97;">APPLICATION</b></center></h4>'
-		+'<div class="row">'
-		+'<div class="col-sm-12">'
-		+'<h6><center class="appTitle" style="background-color:#4b4242;font-weight: bolder;">Accuracy (%) calculation <b style=" font-weight: bold; color: #e0ce97;"></b></center></h6>'
-		+'</div>'
-		
-		
-		+'</div>'
-		
-		//First Row Thickness
-		+'<div class="row">'
-		
-		
-		+'<div class="col-sm-12">'
-		+'<div class="panel panel-default">'
-		
-		+' <div class="panel-body">'
-		+'<div class="row">'
-		
-		+'<div class="col-sm-6">'
-		+' <div class="panel panel-default" style="margin-top: 0px;">'
-        +'  <div class="panel-heading"><center class="subTitle" >Expected Attempt</center></div>'
-        +'  <div class="panel-body">'
-        +' <div class="alert alert-success" >'
-        +' <center><strong>5</strong> </center>'
-        +'</div>'
-       +'</div>'
-        +' </div>'
-		+'</div>'
-		+'<div class="col-sm-6">'
-		+' <div class="panel panel-default" style="margin-top: 0px;">'
-        +'  <div class="panel-heading"><center class="subTitle" >Total Attempt</center></div>'
-        +'  <div class="panel-body">'
-        +' <div class="alert alert-warning" >'
-        +' <center><strong>'+resultMasterJson.actual.actualPulsesCount+'</strong> </center>'
-        +'</div>'
-       +'</div>'
-        +' </div>'
-		+'</div>'
-		
-		+'</div>'
-		+'</div>'
-		+' </div>'
-		+'</div>'
-		
-		+'</div>'
-		+'<br>'
-		
-		$("#main-div1,#main-div").html("");
+	+'  <h3 class="text-center heading">Interfacing of LED and Switch</h3>'
 	
-	
-		$("#main-divResult").html(htm);
-		
-		$('#saveAsJpg').on('click', function() {
-			$('#saveAsJpg').prop("hidden",true);
-		    html2canvas(document.querySelector("#main-divResult")).then(canvas => {
-		        // Append the screenshot canvas to the body
-		        document.body.appendChild(canvas);
-		        $("canvas").css("display","none");
-		        // Optionally save the screenshot as an image
-		        var link = document.createElement('a');
-		        link.download = 'Tachometer_report.png';
-		        link.href = canvas.toDataURL();
-		        link.click();
-		    });
-		});
-		
-		
-//		console.log(resultMasterJson.question.correctQuestion);
-		CorrectAnswer=parseInt(resultMasterJson.question.correctQuestion);
-		var tempBasicKnowledge=parseInt((CorrectAnswer/6)*100);
-	//	console.log("temp "+tempBasicKnowledge);
-		
-		
-		if(tempBasicKnowledge>=60){
-			 var str=''
-				 +' <div class="alert alert-success attainedText">'
-			    +'  <center><strong>Attained</strong> </center>'
-			     +'  </div>'
-			     $("#basicKnowledge").html(str);
-			     
-		}
-		else
-			{
-			 var str=''
-				 +' <div class="alert alert-danger attainedText">'
-			    +'  <center><strong>Not Attained</strong> </center>'
-			     +'  </div>'
-			     $("#basicKnowledge").html(str);
-			}
-		var congCounterTotal=parseInt(resultMasterJson.std.stdPulsesCount);
-		var tempCalPer=parseInt((5/congCounterTotal)*100);
-	//	console.log("tempCalPer "+tempCalPer);
-		if(tempCalPer>=60){
-			 var str=''
-				 +' <div class="alert alert-success attainedText">'
-			    +'  <center><strong>Attained</strong> </center>'
-			     +'  </div>'
-			     $("#config").html(str);
-			     
-		}
-		else
-			{
-			 var str=''
-				 +' <div class="alert alert-danger attainedText">'
-			    +'  <center><strong>Not Attained</strong> </center>'
-			     +'  </div>'
-			     $("#config").html(str);
-			}
-		var appCounterTotal1=parseInt(resultMasterJson.actual.actualPulsesCount);
-		var tempCalPer1=parseInt((5/appCounterTotal1)*100);
-	//	console.log("tempCalPer1 "+tempCalPer1);
-		if(tempCalPer1>=60){
-			 var str=''
-				 +' <div class="alert alert-success attainedText">'
-			    +'  <center><strong>Attained</strong> </center>'
-			     +'  </div>'
-			     $("#application").html(str);
-			     
-		}
-		else
-			{
-			 var str=''
-				 +' <div class="alert alert-danger attainedText">'
-			    +'  <center><strong>Not Attained</strong> </center>'
-			     +'  </div>'
-			     $("#application").html(str);
-			}
+	+`<div>
+	 `
 
-	// Build the chart
+	+' <!-- Competency Table -->'
+	+' <div class="box">'
+	+' <div class="row">'
+	+'  <div class="col-sm-6">'
+	+' <table class="table table-bordered status-table">'
+	+'    <thead>'
+	+'     <tr>'
+	+'        <th>Competency </th>'
+	+'        <th>Status</th>'
+	+'        <th>Time</th>'
+	+'      </tr>'
+	+'    </thead>'
+	+'   <tbody>'
+	+'      <tr>'
+	+'       <td><b>Configuration</b></td>'
+	+'        <td id="piping">'
+	
+	+'		</td>'
+	+'        <td id="pipingTimer">'
+	
+	+'       </td>'
+	+'     </tr>'
+	+'      <tr>'
+	+'        <td> <b>Connections</b></td>'
+	+'        <td id="instr">'
+
+	+'		</td>'
+    +'        <td id="quatTimer">'
+	
+	+'       </td>'
+	+'      </tr>'
+
+	+'       <tr>'
+	+'        <td><b>Questions</b></td>'
+	+'        <td id="comp">'
+	
+    +'		</td>'
+  +'        <td id="compareTimer">'
+	
+	+'       </td>'
+   +'     </tr>'
+   
+
+          
+    +'    </tbody>'
+    +'  </table>'
+    +' </div>'
+    +' <div class="col-sm-6" id="graphDiv">'
+	 
+    +' </div>'
+    +'</div>'
+    +'</div>'
+  
+    +'   <!-- First Row -->'
+    +'  <div class="row">'
+    +'   <div class="col-md-4" >'
+    +'     <div class="box">'
+    +'      <h5 class="section-title sectionStyle" >Configuration</h5>'
+    +'       <div class="table-container">'
+    +'        <table style="border-style: solid;">'
+    +'           <tr class="trStyle">'
+    +'            <th>Expected</th>'
+    +'             <th>Actual</th>'
+    +'          </tr>'
+    +'           <tr>'
+    +'           <td><b> <center><strong class="correct">1</strong> </center></b></td>'
+	+'           <td><b> <center><strong class="wrong">'+configCount+'</strong> </center></b></td>'
+	  +'         </table>'
+    +'      </div>'
+    +'    </div>'
+    +'   </div>'
+    +'  <div class="col-md-4" >'
+    +'    <div class="box">'
+    +'     <h5 class="section-title sectionStyle" >Connections</h5>'
+    +'     <div class="table-container">'
+	+'       <table style="border-style: solid;">'
+	+'          <tr class="trStyle">'
+	+'            <th>Expected</th>'
+	+'            <th>Actual</th>'
+	+'          </tr>'
+	+'          <tr>'
+	 +'						  <td><b class="correct">1</b></td>'
+	    +'                       <td><b class="wrong">'+mimicCount+'</b></td>'
+	  	+'          </tr>'
+	+'        </table>'
+	+'      </div>'
+	+'     </div>'
+	+'   </div>'
+	    +'  <div class="col-md-4" >'
+    +'    <div class="box">'
+    +'     <h5 class="section-title sectionStyle" >Questions</h5>'
+    +'     <div class="table-container">'
+	+'       <table style="border-style: solid;">'
+	+'          <tr class="trStyle">'
+	+'            <th>Expected</th>'
+	+'            <th>Actual</th>'
+	+'          </tr>'
+	+'          <tr>'
+	 +'						  <td><b class="correct">6</b></td>'
+	    +'                       <td><b class="wrong">'+question+'</b></td>'
+	  	+'          </tr>'
+	+'        </table>'
+	+'      </div>'
+	+'     </div>'
+	+'   </div>'
+	
+//	+' <!-- First Row -->'
+//	+'<!-- <div class="row">'
+//	+'  <div class="col-md-3">'
+//	+'  </div>'
+//	+' <div class="col-md-6">'
+//	+'   <div class="box">'
+//	+'     <h5 class="section-title sectionStyle" >Comparision and Purchase order</h5>'
+//	+'     <div class="table-container">'
+//	+'       <table style="border-style: solid;">'
+//	+'         <tr class="trStyle">'
+//	+'           <th>Expected</th>'
+//	+'           <th>Actual</th>'
+//	+'         </tr>'
+//	+'         <tr>'
+//	 +'						  <td><b class="correct">2</b></td>'
+// +'                       <td><b class="wrong">2</b></td>'
+// +'         </tr>'
+//	+'       </table>'
+//	+'     </div>'
+//	+'   </div>'
+//	+' </div>'
+//	+'  <div class="col-md-3">'
+//	+'  </div>'
+//	+' </div> -->'
+
+	+'<!-- Graphs Section -->'
+	+'<div class="row">'
+    +'</div>'
+    +'<!-- Pie Chart Section -->'
+    +'<div class="row">'
+      
+    +'</div>'
+
+
+    $("#mainDiv").html(htm);
+	
+
+
+	if(configPer>=60){
+		 var str=''
+	 +'	     	<div class="alert alert-success attainedText">'
+	+'    			 <center><strong> Attained</strong> </center>'
+	+'     		 </div>'
+	 $("#piping").html(str);
+		 var str1=''
+	+'	     	<div class="alert alert-success attainedText">'
+	+'    	   <center><strong> '+timerMasterJson.configuration+'</strong> </center>'
+	+'     		 </div>'
+	 $("#pipingTimer").html(str1); 
+		     
+	}
+	else
+		{
+		 var str=''
+			 +' <div class="alert alert-danger attainedText">'
+		    +'  <center><strong>Not Attained</strong> </center>'
+		     +'  </div>'
+		     $("#piping").html(str);
+		 var str1=''
+				+'	     	<div class="alert alert-danger attainedText">'
+				+'    	   <center><strong> '+timerMasterJson.configuration+'</strong> </center>'
+				+'     		 </div>'
+							     $("#pipingTimer").html(str1); 
+		 
+								
+		}
+	if(mimicPer>=60){
+		 var str=''
+	 +'	     	<div class="alert alert-success attainedText">'
+	+'    			 <center><strong> Attained</strong> </center>'
+	+'     		 </div>'
+		     $("#instr").html(str);
+		 var str1=''
+				+'	     	<div class="alert alert-success attainedText">'
+				+'    	   <center><strong> '+timerMasterJson.mimic+'</strong> </center>'
+				+'     		 </div>'
+							     $("#quatTimer").html(str1); 
+		 	 
+		     
+	}
+	else
+		{
+		 var str=''
+			 +' <div class="alert alert-danger attainedText">'
+		    +'  <center><strong>Not Attained</strong> </center>'
+		     +'  </div>'
+		     $("#instr").html(str);
+		 var str1=''
+				+'	     	<div class="alert alert-danger attainedText">'
+				+'    	   <center><strong> '+timerMasterJson.mimic+'</strong> </center>'
+				+'     		 </div>'
+							     $("#quatTimer").html(str1); 
+		}
+		
+		if(quesPer>=60){
+				 var str=''
+			 +'	     	<div class="alert alert-success attainedText">'
+			+'    			 <center><strong> Attained</strong> </center>'
+			+'     		 </div>'
+				     $("#comp").html(str);
+				 var str1=''
+						+'	     	<div class="alert alert-success attainedText">'
+						+'    	   <center><strong> '+timerMasterJson.question+'</strong> </center>'
+						+'     		 </div>'
+									     $("#compareTimer").html(str1); 
+				 	 
+				     
+			}
+			else
+				{
+				 var str=''
+					 +' <div class="alert alert-danger attainedText">'
+				    +'  <center><strong>Not Attained</strong> </center>'
+				     +'  </div>'
+				     $("#comp").html(str);
+				 var str1=''
+						+'	     	<div class="alert alert-danger attainedText">'
+						+'    	   <center><strong> '+timerMasterJson.question+'</strong> </center>'
+						+'     		 </div>'
+									     $("#compareTimer").html(str1); 
+				}
+				
+
+	
+//	if(startPer>=100 && datasheetPer>=100 && trendsPer>=100){
+//		 var str=''
+//	 +'	     	<div class="alert alert-success attainedText">'
+//	+'    			 <center><strong> Attained</strong> </center>'
+//	+'     		 </div>'
+//		     $("#simulation").html(str);
+//	var str1=''
+//	+'	     	<div class="alert alert-success attainedText">'
+//	+'    	   <center><strong> '+timerMasterJson.mimic+'</strong> </center>'
+//	+'     		 </div>'
+//	 $("#simulationTimer").html(str1); 
+//	}
+//	else
+//		{
+//		 var str=''
+//			 +' <div class="alert alert-danger attainedText">'
+//		    +'  <center><strong>Not Attained</strong> </center>'
+//		     +'  </div>'
+//		     $("#simulation").html(str);
+//		 var str1=''
+//				+'	     	<div class="alert alert-danger attainedText">'
+//				+'    	   <center><strong> '+timerMasterJson.mimic+'</strong> </center>'
+//				+'     		 </div>'
+//							     $("#simulationTimer").html(str1); 
+//		}
 	Highcharts.chart('graphDiv', {
 		credits: { enabled: false},
 	    chart: {
 	        plotBackgroundColor: null,
 	        plotBorderWidth: null,
 	        plotShadow: false,
-	        type: 'pie'
+	        type: 'pie',
+	        backgroundColor: '#f0f0f0'
 	    },
+		exporting: { enabled: false },
+		credits: { enabled: false},
 	    title: {
 	        text: ' ',
 	        align: 'left'
 	    },
 	    tooltip: {
-	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-	    },
+	    	 enabled: false,
+        style: {
+            fontFamily: 'Arial, sans-serif', // Set tooltip font family
+            fontSize: '12px',                    // Set tooltip font size
+            color: '#000',                    // Set tooltip text color
+            fontWeight: 'bold',                  // Optional: bold text
+            backgroundColor: '#000'           // Optional: tooltip background color
+        },
+        formatter: function () {
+            return `<b>${this.point.name}</b>: ${this.y}%`;
+        }
+    },
 	    accessibility: {
 	        point: {
 	            valueSuffix: '%'
@@ -348,48 +350,77 @@ function result(){
 	    },
 	    plotOptions: {
 	        pie: {
-	            allowPointSelect: true,
-	            cursor: 'pointer',
 	            dataLabels: {
 	                enabled: true,
-	                format: '<span style="font-size: 1.2em"><b>{point.name}</b>' +
-	                    '</span><br>' +
-	                    '<span style="opacity: 0.6">{point.percentage:.1f} ' +
-	                    '%</span>',
-	                connectorColor: 'rgba(128,128,128,0.5)'
+	                style: {
+	                    color: '#000',
+//	                font-family: 'Arial, sans-serif',
+	                fontSize: '14px',
+	                /* font-weight: bold; */
+	                fill: '#000',
+	                },
+	                formatter: function () {
+	                    return `<span>${this.point.name}: ${this.percentage.toFixed(2)}%</span>`;
+	                }
 	            }
 	        }
 	    },
+
 	    series: [{
 	        name: '',
 	        data: [
-	            { name: 'Basic Knowledge', y: tempBasicKnowledge },
-	            { name: 'Configuration', y: tempCalPer },
-	            { name: 'Application', y: tempCalPer1 },
-	            { name: 'Mimic', y: 100 },
+	            { name: 'Configuration', y: configPer },
+	            { name: 'Connection', y: mimicPer },
+	            
+	            { name: 'Questions', y:  quesPer}
+				
 	          
-	            { name: 'Observation', y: 100 }
 	        ]
 	    }]
 	});
 	
-     $(document).ready(function() {
-    	 var currentDateTime = new Date();
-
-         // Manually format the date as DD MM YYYY
-         var day = String(currentDateTime.getDate()).padStart(2, '0');
-         var month = String(currentDateTime.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-         var year = currentDateTime.getFullYear();
-
-         var formattedDate = day + '/' + month + '/' + year;
-
-         var time = currentDateTime.toLocaleTimeString();  // Get the current time
-
-         // Display the formatted date and time in the respective elements
-         $("#currentDate").text(formattedDate);
-         $("#currentTime").text(time);
-//         console.log("date "+date);
-//         console.log("time "+time);
-     });
+	updateDateTime();
+	
+$("#report").click(function() {
+		tmp = $("#nameInput").val();
+		if(tmp != ""){
+			
+			  // Restore value from localStorage when page loads
+			  const savedName = localStorage.getItem("username");
+			  if (savedName) {
+			    $('#nameInput').val(savedName);
+			  }
  
+			  // Save input on change
+			  $('#nameInput').on('input', function() {
+			    localStorage.setItem("username", $(this).val());
+			  });
+			
+ 
+			console.log("click triggred");
+ 
+			const button = document.getElementById("report");
+			button.hidden = true;
+ 
+			html2canvas(document.querySelector("#mainDiv"), {
+				useCORS: true,
+				allowTaint: false,
+				backgroundColor: null
+			}).then(canvas => {
+				let link = document.createElement('a');
+				link.download = 'report.png';
+				link.href = canvas.toDataURL("image/png");
+				link.click();
+//				$("#btnNext").prop("hidden", false);
+			}).catch(err => {
+				console.error("Screenshot failed:", err);
+			}).finally(() => {
+				button.hidden = true;
+			});
+			$("#divMis").prop("hidden",true);
+			
+			}else{
+				alert("Enter MIS Number");
+			}
+	});
 }

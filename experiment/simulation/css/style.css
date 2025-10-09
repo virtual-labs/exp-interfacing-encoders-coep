@@ -4,21 +4,41 @@
   padding: 10px;
   border: 1px solid #aaaaaa;
 }
- .btn1 {
-        margin-left:10px;
-        margin-right: 10px;
-        margin-top:7px;
-        float:right;
-        margin-bottom:10px;
-        padding: 7px; 
-        border:none; 
-        border-radius: 5px;
-        }
+/* #modelTitle{ */
+/* 	background-color: #244f56; */
+/*     padding: 7px; */
+/*     color: #fff; */
+/*     font-size: 17px; */
+/*     margin:10px;} */
+#modelTitle{
+	background-color:#a4b5b9;
+    padding: 7px;
+    color: #000;
+    font-size: 17px;
+    margin:10px;}
+
 #imgb1{
 	background-image: url("images/b1.jpg");
 	 background-color: #cccccc;
 }
- #questionDiv{}
+#div1 {
+  width: 600px;
+  height: 670px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+#timeAnswer,#timeAnswerLvl,#timeAnswerFlow
+{
+			background-color: #31717b;
+			color:#fff;
+			padding:10px;
+			margin: 5px;
+}
+#imgb1{
+	background-image: url("images/b1.jpg");
+	 background-color: #cccccc;
+}
+ 
 .QueHead{font-size: 18px;
       font-size: 22px;
     font-weight: bold;
@@ -62,3 +82,28 @@ background: linear-gradient(90deg, rgba(125,176,169,1) 0%, rgba(78,109,114,1) 31
     bottom: 0;
     width: 100%;
 }
+
+  .my-swal-popup {
+      width: 500px !important;   /* set width */
+      height: 500px !important;  /* set height */
+      font-size: 18px;           /* optional: bigger text */
+    }
+    
+    .timerStyle{
+	       background-color: #42494f;
+    color: #e8ac6e;
+    font-weight: 700;
+    font-family: 'digital-clock-font';
+    letter-spacing: 1px;
+}
+
+    .btn1 {
+        margin-left:10px;
+        margin-right: 10px;
+        margin-top:7px;
+        float:right;
+        margin-bottom:10px;
+        padding: 7px; 
+        border:none; 
+        border-radius: 5px;
+        }
