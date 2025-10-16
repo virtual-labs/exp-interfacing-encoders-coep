@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Interfacing of Encoders</title>
+<title>Interfacing of Encoder</title>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="lib/jquery.js"></script>
@@ -64,10 +64,10 @@
 	<div class="col-sm-8" id="buttonDiv">
 	</div>
 	<div class="col-sm-1" id="buttonDiv">
-	<button type="button" class="btn btn-info button3"  id="refresh" data-toggle="modal"><i class="fa fa-refresh"></i> <b>REFRESH</b></button>
+<!-- 	<button type="button" class="btn btn-info button3"  id="refresh" data-toggle="modal"><i class="fa fa-refresh"></i> <b>REFRESH</b></button> -->
 	</div>
 	<div class="col-sm-2" id="buttonDiv">
-	<button type="button" class="btn btn-danger button5" id="procedure" data-toggle="modal" data-target="#readProcedureModal"><b>READ PROCEDURE</b></button>
+<!-- 	<button type="button" class="btn btn-danger button5" id="procedure" data-toggle="modal" data-target="#readProcedureModal"><b>READ PROCEDURE</b></button> -->
 	</div>
 	<div class="col-sm-1" id="buttonDiv">
 	<h5 id="counter" class=" btn1 timerStyle" >00:00:00</h5>
@@ -393,6 +393,10 @@ var config = {
 </script>
 
 <script>
+$(document).ready(function() {
+	$("#canvas-div1").html("");
+	mimic();
+});
   // Simple Swal function
   function showSwal(message, type = 'info', title = 'Status') {
 	  Swal.fire({

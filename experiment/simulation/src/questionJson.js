@@ -6,38 +6,38 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "When a switch is said to be press-to-high, it means:",
+					"QC": "What is the main function of an encoder in a control system?",
 					"ANS": [{
+						"ANSID": false,
+						"content": "To amplify motor voltage"
+					}, {
 						"ANSID": true,
-						"content": "Output goes HIGH when switch is pressed"
+						"content": "To convert mechanical motion into an electrical signal"
 					}, {
 						"ANSID": false,
-						"content": "Output goes LOW when switch is pressed"
-					}, {
-						"ANSID": false,
-						"content": "LED always glows when pressed"
+						"content": "To supply power to the motor"
 					},{
 						"ANSID": false,
-						"content": "Output stays floating"
+						"content": "To generate analog voltage from digital input"
 					}]
 				}]
 			}, {
 
 				"QUES": [{
 					
-					"QC": "In a press-to-low switch, pressing the switch will:",
+					"QC": "What type of encoder is used in this project?",
 					"ANS": [{
 						"ANSID": false,
-						"content": "Pull the signal to Vcc"
+						"content": "Absolute Encoder"
+					}, {
+						"ANSID": false,
+						"content": "Linear Encoder"
 					}, {
 						"ANSID": true,
-						"content": "Pull the signal to GND"
+						"content": "Incremental Encoder"
 					}, {
 						"ANSID": false,
-						"content": "Keep output floating"
-					}, {
-						"ANSID": false,
-						"content": "Toggle LED automatically"
+						"content": "Magnetic Encoder"
 					}]
 					
 				}]
@@ -45,19 +45,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "A sourcing input requires the external device to:",
+					"QC": "What component in the encoder allows infrared light to pass through and generate pulses?",
 					"ANS": [{
+						"ANSID": false,
+						"content": "The motor coil"
+					}, {
 						"ANSID": true,
-						"content": "Sink current"
+						"content": "The rotating disk with holes"
 					}, {
 						"ANSID": false,
-						"content": "Source current"
+						"content": "The photodiode array"
 					}, {
 						"ANSID": false,
-						"content": "Toggle voltage"
-					}, {
-						"ANSID": false,
-						"content": "Switch polarity"
+						"content": "The transistor base"
 					}]
 					
 				}]
@@ -65,19 +65,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "A sinking input requires the external device to",
+					"QC": "In this project, what does the IR emitter do?",
 					"ANS": [{
 						"ANSID": false,
-						"content": "Float the voltage"
+						"content": "Detects light reflected from the disk"
 					}, {
 						"ANSID": true,
-						"content": "Source current"
+						"content": "Sends out a beam of infrared light"
 					}, {
 						"ANSID": false,
-						"content": "Provide resistance"
+						"content": "Converts electrical pulses to light pulses"
 					}, {
 						"ANSID": false,
-						"content": "Pull to ground only"
+						"content": "Amplifies the encoder signal"
 					}]
 					
 				}]
@@ -85,19 +85,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "In a sourcing output, the current flows:",
+					"QC": "What does PPR stand for in an encoder?",
 					"ANS": [{
-						"ANSID": false,
-						"content": "From load to output"
-					}, {
-						"ANSID": false,
-						"content": "Only to ground"
-					}, {
 						"ANSID": true,
-						"content": "From output to load"
+						"content": "Pulses Per Revolution"
 					}, {
 						"ANSID": false,
-						"content": "Only to Vcc"
+						"content": "Pulse Position Ratio"
+					}, {
+						"ANSID":false ,
+						"content": "Power Per Rotation"
+					}, {
+						"ANSID": false,
+						"content": "Phase Pulse Resolution"
 					}]
 					
 				}]
@@ -105,19 +105,19 @@ QuestionsJSON = {
 
 				"QUES": [{
 					
-					"QC": "In a sinking output, the current flows:",
+					"QC": "Which component is used to display the calculated RPM value?",
 					"ANS": [{
 						"ANSID": false,
-						"content": "From Vcc into output directly"
+						"content": "7-segment display"
+					}, {
+						"ANSID": false,
+						"content": "OLED display"
 					}, {
 						"ANSID": true,
-						"content": "From load into the output and then to ground"
+						"content": "16x2 LCD (I2C)"
 					}, {
 						"ANSID": false,
-						"content": "From output to Vcc"
-					}, {
-						"ANSID": false,
-						"content": "Between two outputs"
+						"content": "LED array"
 					}]
 					
 				}]
