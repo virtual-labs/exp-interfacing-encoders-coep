@@ -10,10 +10,6 @@
 			 updateCounter();
 			 $("#centerText1").html('QUESTIONS');
 
-			$("#canvas-div").html('');
-			
-				
-
 			var questions = '';
 			questions += ''
 				+ '<div id = "questionDiv">'
@@ -58,7 +54,7 @@
 				
 		
 
-			$("#canvas-div").html(questions);
+			$("#main-div-conf").html(questions);
 
 			$('#testSubmit').on('click', function() {		
 				$("body").css("padding","0px 0px 0px 0px");

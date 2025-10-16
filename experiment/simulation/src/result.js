@@ -34,7 +34,7 @@ function result(){
 //	var total = 0;
 	
 	var configCount = resultJson.configuration;
-	var mimicCount = resultJson.mimic;
+	var mimicCount = connectionStatus;
 	var question = resultJson.questions;
 	
 	var configPer = parseFloat((1/configCount)*100);
@@ -55,7 +55,7 @@ function result(){
 //	 +' <div class="row titlePart" id="" ><center><span >Inquiry, Quotation, Comparative statement, Purchase orders</span></center></div>' 
 	+' <!-- Title -->'
 
-	+'  <h3 class="text-center heading">Interfacing of LED and Switch</h3>'
+	+'  <h3 class="text-center heading">Interfacing of Encoder</h3>'
 	
 	+`<div>
 	 `
