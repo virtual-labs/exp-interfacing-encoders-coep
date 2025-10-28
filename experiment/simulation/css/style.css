@@ -68,6 +68,81 @@
 	box-shadow: 0 5px #666;
 	transform: translateY(4px);
 }
+ /* Position the oscilloscope overlay */
+  .scope-body {
+  position: absolute;
+    top: 3%;
+    left: 66%;
+    width: 24%;
+    height: 7%;
+    background: #f5b913;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+}
+
+  .scope-screen {
+    background: #d3d3d3;
+    border: 3px solid #222;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .scope-screen::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 1;
+  }
+
+  .v-label, .t-label {
+    position: absolute;
+    font-size: 10px;
+    color: #000;
+  }
+
+  .v-label {
+    right: 4px;
+    top: 50%;
+    transform: rotate(-90deg) translateY(-50%);
+    transform-origin: right top;
+  }
+
+  .t-label {
+    bottom: 2px;
+    left: 35%;
+  }
+
+  .terminals {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
+
+  .terminal {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .terminal.red { background: red; }
+  .terminal.black { background: black; }
 footer {
 	background: rgb(125,176,169);
 background: linear-gradient(90deg, rgba(125,176,169,1) 0%, rgba(78,109,114,1) 31%, rgba(33,44,62,1) 100%);

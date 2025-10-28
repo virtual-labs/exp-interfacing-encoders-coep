@@ -15,7 +15,7 @@ var selection = '<div class="row selectConf" >'
 	+ '<div class="col-sm-1">'
 	+ '</div>'
 	+ '<div class="col-sm-5" id="IpinSelection" >'
-	+ '<label class="labelstyle">Select Input Pin For encoder :</label>'
+	+ '<label class="labelstyle">Select Input Pin For Incremental encoder :</label>'
 	+ '</div>'
 	+ '<div class="col-sm-5">'
 	+ '<select  class="form-control selectConf" id="inputPinName"  style="height:auto;" >'
@@ -35,61 +35,61 @@ var selection = '<div class="row selectConf" >'
 	+ '</div>'
 	+ '</div>'
 	
-	+'<div class="row selectConf" >'
-	+ '<div class="col-sm-1">'
-	+ '</div>'
-	+ '<div class="col-sm-5" id="OpinSelection" >'
-	+ '<label class="labelstyle">Select Output Pin For LED :</label>'
-	+ '</div>'
-	+ '<div class="col-sm-5">'
-	+ '<select  class="form-control selectConf" id="outputPinName"  style="height:auto;" disabled>'
-	+ '<option value="0">--- Select Output Pin ---</option>'
-//	+ '<option value="1" name="PD1">PD1</option>'
-	+ '<option value="2" name="PD2">PD2</option>'
-	+ '<option value="3" name="PD3">PD3</option>'
-	+ '<option value="4" name="PD4">PD4</option>'
-	+ '<option value="5" name="PD5">PD5</option>'
-	+ '<option value="6" name="PD6">PD6</option>'
-	+ '<option value="7" name="PD7">PD7</option>'
-	+ '</select>'
-	+ '</div>'
-	+ '<div class="col-sm-1">'
-	+ '</div>'
-	+ '</div>'
-	
-	+'<div class="row selectConf" >'
-	+ '<div class="col-sm-1">'
-	+ '</div>'
-	+ '<div class="col-sm-5" id="sVal" >'
-	+ '<label class="labelstyle">Select Switch Configuration : </label>'
-	+ '</div>'
-	+ '<div class="col-sm-5">'
-	+ '<select  class="form-control selectConf" id="switchConfig"  style="height:auto;" disabled >'
-	+ '<option value="0">--- Select Switch Configuration ---</option>'
-	+ '<option value="1" >Press-to-High</option>'
-	+ '<option value="2" >Press-to-Low</option>'
-	+ '</select>'
-	+ '</div>'
-	+ '<div class="col-sm-1">'
-	+ '</div>'
-	+ '</div>'
-	
-	+ '<div class="row selectConf" >'
-	+ '<div class="col-sm-1">'
-	+ '</div>'
-	+ '<div class="col-sm-5" id="ledSelect" >'
-	+ '<label class="labelstyle">Select LED Configuration :</label>'
-	+ '</div>'
-	+ '<div class="col-sm-5">'
-	+ '<select  class="form-control selectConf" id="ledtype"  style="height:auto;" disabled>'
-	+ '<option value="0">--- Select LED Configuration ---</option>'
-	+ '<option value="1" >Current Sourcing</option>'
-	+ '<option value="2" >Current Sinking</option>'
-	+ '</select>'
-	+ '</div>'
-	+ '<div class="col-sm-1">'
-	+ '</div>'
-	+ '</div>'
+//	+'<div class="row selectConf" >'
+//	+ '<div class="col-sm-1">'
+//	+ '</div>'
+//	+ '<div class="col-sm-5" id="OpinSelection" >'
+//	+ '<label class="labelstyle">Select Output Pin For LED :</label>'
+//	+ '</div>'
+//	+ '<div class="col-sm-5">'
+//	+ '<select  class="form-control selectConf" id="outputPinName"  style="height:auto;" disabled>'
+//	+ '<option value="0">--- Select Output Pin ---</option>'
+////	+ '<option value="1" name="PD1">PD1</option>'
+//	+ '<option value="2" name="PD2">PD2</option>'
+//	+ '<option value="3" name="PD3">PD3</option>'
+//	+ '<option value="4" name="PD4">PD4</option>'
+//	+ '<option value="5" name="PD5">PD5</option>'
+//	+ '<option value="6" name="PD6">PD6</option>'
+//	+ '<option value="7" name="PD7">PD7</option>'
+//	+ '</select>'
+//	+ '</div>'
+//	+ '<div class="col-sm-1">'
+//	+ '</div>'
+//	+ '</div>'
+//	
+//	+'<div class="row selectConf" >'
+//	+ '<div class="col-sm-1">'
+//	+ '</div>'
+//	+ '<div class="col-sm-5" id="sVal" >'
+//	+ '<label class="labelstyle">Select Switch Configuration : </label>'
+//	+ '</div>'
+//	+ '<div class="col-sm-5">'
+//	+ '<select  class="form-control selectConf" id="switchConfig"  style="height:auto;" disabled >'
+//	+ '<option value="0">--- Select Switch Configuration ---</option>'
+//	+ '<option value="1" >Press-to-High</option>'
+//	+ '<option value="2" >Press-to-Low</option>'
+//	+ '</select>'
+//	+ '</div>'
+//	+ '<div class="col-sm-1">'
+//	+ '</div>'
+//	+ '</div>'
+//	
+//	+ '<div class="row selectConf" >'
+//	+ '<div class="col-sm-1">'
+//	+ '</div>'
+//	+ '<div class="col-sm-5" id="ledSelect" >'
+//	+ '<label class="labelstyle">Select LED Configuration :</label>'
+//	+ '</div>'
+//	+ '<div class="col-sm-5">'
+//	+ '<select  class="form-control selectConf" id="ledtype"  style="height:auto;" disabled>'
+//	+ '<option value="0">--- Select LED Configuration ---</option>'
+//	+ '<option value="1" >Current Sourcing</option>'
+//	+ '<option value="2" >Current Sinking</option>'
+//	+ '</select>'
+//	+ '</div>'
+//	+ '<div class="col-sm-1">'
+//	+ '</div>'
+//	+ '</div>'
 
 
 	+ '<div class="row" selectConf>'
@@ -169,135 +169,135 @@ $("#inputPinName").change(function(){
 		if(inputPinVal<=0){
 			toastr.warning("Select Input Pin.");
 		}else{		  
-		  $("#outputPinName").prop("disabled",false);			  
+		  $("#generateCode").prop("disabled",false);			  
  		  $("#inputPinName").prop("disabled",true);	 
 		}
 		
 		
 	});
 
-$("#outputPinName").change(function(){
-		var selectEl = document.getElementById("outputPinName");
-		var selectedOption = selectEl.options[selectEl.selectedIndex];
-
-// get value and name
-		 selectedOutput = selectedOption.value; // e.g. "D2"
-		 console.log(selectedOutput);
-		var selectedName1 = selectedOption.getAttribute("name");
-		$("body").css("padding","0px 0px 0px 0px");	
-		outputPinVal = selectedName1;
-		if(selectedOutput == 0){
-			toastr.warning("Select Output Pin.");
-		}else{
-			 if (selectedOutput == 2 && selectedValue == 2){
-//				toastr.warning("Input and output pin can not be same ");
-				wrongConfig++;
-				showSwal('Input and output pin can not be same','warning');
-			 }else if (selectedOutput == 3 && selectedValue == 3){
-//				toastr.warning("Input and output pin can not be same ");
-				wrongConfig++;
-				showSwal('Input and output pin can not be same','warning');
-			 }else if (selectedOutput == 4 && selectedValue == 4){
-//				toastr.warning("Input and output pin can not be same ");
-				wrongConfig++;
-				showSwal('Input and output pin can not be same','warning');
-			 }else if (selectedOutput == 5 && selectedValue == 5){
-				 wrongConfig++;
-//				toastr.warning("Input and output pin can not be same ");
-				showSwal('Input and output pin can not be same','warning');
-			 }else if (selectedOutput == 6 && selectedValue == 6){
-				 wrongConfig++;
-//				toastr.warning("Input and output pin can not be same ");
-				showSwal('Input and output pin can not be same','warning');
-			 }else if (selectedOutput == 7 && selectedValue == 7){
-				 wrongConfig++;
-//				toastr.warning("Input and output pin can not be same ");
-				showSwal('Input and output pin can not be same','warning');
-			 }
-			 else{
-				$("#switchConfig").prop("disabled",false);			  
- 		 		 $("#outputPinName").prop("disabled",true);
-			}		  
-		  
-		}
-		
-		
-	});
+//$("#outputPinName").change(function(){
+//		var selectEl = document.getElementById("outputPinName");
+//		var selectedOption = selectEl.options[selectEl.selectedIndex];
+//
+//// get value and name
+//		 selectedOutput = selectedOption.value; // e.g. "D2"
+//		 console.log(selectedOutput);
+//		var selectedName1 = selectedOption.getAttribute("name");
+//		$("body").css("padding","0px 0px 0px 0px");	
+//		outputPinVal = selectedName1;
+//		if(selectedOutput == 0){
+//			toastr.warning("Select Output Pin.");
+//		}else{
+//			 if (selectedOutput == 2 && selectedValue == 2){
+////				toastr.warning("Input and output pin can not be same ");
+//				wrongConfig++;
+//				showSwal('Input and output pin can not be same','warning');
+//			 }else if (selectedOutput == 3 && selectedValue == 3){
+////				toastr.warning("Input and output pin can not be same ");
+//				wrongConfig++;
+//				showSwal('Input and output pin can not be same','warning');
+//			 }else if (selectedOutput == 4 && selectedValue == 4){
+////				toastr.warning("Input and output pin can not be same ");
+//				wrongConfig++;
+//				showSwal('Input and output pin can not be same','warning');
+//			 }else if (selectedOutput == 5 && selectedValue == 5){
+//				 wrongConfig++;
+////				toastr.warning("Input and output pin can not be same ");
+//				showSwal('Input and output pin can not be same','warning');
+//			 }else if (selectedOutput == 6 && selectedValue == 6){
+//				 wrongConfig++;
+////				toastr.warning("Input and output pin can not be same ");
+//				showSwal('Input and output pin can not be same','warning');
+//			 }else if (selectedOutput == 7 && selectedValue == 7){
+//				 wrongConfig++;
+////				toastr.warning("Input and output pin can not be same ");
+//				showSwal('Input and output pin can not be same','warning');
+//			 }
+//			 else{
+//				$("#switchConfig").prop("disabled",false);			  
+// 		 		 $("#outputPinName").prop("disabled",true);
+//			}		  
+//		  
+//		}
+//		
+//		
+//	});
 	var comment , comment1 = '';
 	
 var dCycleVal, code , code1 ;
-$("#switchConfig").change(function(){
-		$("body").css("padding","0px 0px 0px 0px");	
-		dCycleVal = $("#switchConfig").val();
-		if(dCycleVal<=0){
-			toastr.warning("Select Output Pin.");
-		}else{
-		   $("#ledtype").prop("disabled",false);		  		  			  
- 		  $("#switchConfig").prop("disabled",true);
-// 		  if(dCycleVal == 1){
-//			code = "HIGH";
-//			code1 = "LOW";
-//			comment = "LED ON when switch pressed",
-//			comment1 = "LED OFF when switch released";
-//			
+//$("#switchConfig").change(function(){
+//		$("body").css("padding","0px 0px 0px 0px");	
+//		dCycleVal = $("#switchConfig").val();
+//		if(dCycleVal<=0){
+//			toastr.warning("Select Output Pin.");
 //		}else{
-//			code = "LOW";
-//			code1 = "HIGH";
-//			comment = "LED OFF when switch released";
-//			comment1 = "LED ON when switch pressed";
-//		}
-		}	
-	});
+//		   $("#ledtype").prop("disabled",false);		  		  			  
+// 		  $("#switchConfig").prop("disabled",true);
+//// 		  if(dCycleVal == 1){
+////			code = "HIGH";
+////			code1 = "LOW";
+////			comment = "LED ON when switch pressed",
+////			comment1 = "LED OFF when switch released";
+////			
+////		}else{
+////			code = "LOW";
+////			code1 = "HIGH";
+////			comment = "LED OFF when switch released";
+////			comment1 = "LED ON when switch pressed";
+////		}
+//		}	
+//	});
 	
 	
 var loopcode = '';
-$("#ledtype").change(function(){
-	$("body").css("padding","0px 0px 0px 0px");	
-		ledTypeVAl = $("#ledtype").val(); 
-		if(ledTypeVAl<=0){
-			toastr.warning("Select LED Connection Type.");
-		}else{	
-		  $("#generateCode").prop("disabled",false);
-		  $("#compileCode").prop("disabled",false);
-		  $("#executeCode").prop("disabled",false);
-		  $("#downloadCode").prop("disabled",false);	  
-		  $("#ledtype").prop("disabled",true);	
-		  
-		 if(ledTypeVAl == 1 &&  dCycleVal == 1){
-		
-		loopcode =	`<p> if (state == HIGH) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;//   Switch is pressed
-		<p>digitalWrite(ledPin, HIGH );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin HIGN -> sources current -> LED turns ON </p>
- 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // Switch is released
-		<p> digitalWrite(ledPin, LOW );    &nbsp; &nbsp; &nbsp; &nbsp;   // Drive LED pin LOW -> no current flows -> LED turns OFF </p>
- 		<p> } </p>
-		}`
-		}else if (ledTypeVAl == 2 &&  dCycleVal == 1) {
-		loopcode =	`<p> if (state == HIGH) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; //   Switch is pressed
-		<p>digitalWrite(ledPin, LOW );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin LOW -> sink current -> LED turns ON </p>
- 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// Switch is released
-		<p> digitalWrite(ledPin, HIGN );    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  // Drive LED pin HIGH -> no current sink -> LED turns OFF </p>
- 		<p> } </p>
-		}`	
-			
-		}else if (ledTypeVAl == 1 &&  dCycleVal == 2) {
-		loopcode =	`<p> if (state == LOW) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;//   Switch is pressed
-		<p>digitalWrite(ledPin, HIGN  );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin HIGN -> sources current -> LED turns ON </p>
- 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // Switch is released
-		<p> digitalWrite(ledPin, LOW);    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp; // Drive LED pin LOW -> no current source -> LED turns OFF </p>
- 		<p> } </p>
-		}`	
-			
-		}else if (ledTypeVAl == 2 &&  dCycleVal == 2) {
-		loopcode =	`<p> if (state == LOW) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;//   Switch is pressed
-		<p>digitalWrite(ledPin, LOW );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin LOW -> sink current -> LED turns ON </p>
- 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;// Switch is released
-		<p> digitalWrite(ledPin, HIGN );    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  // Drive LED pin HIGH -> no current flows -> LED turns OFF </p>
- 		<p> } </p>
-		}`
-		}	  	 
-		}
-		
-});
+//$("#ledtype").change(function(){
+//	$("body").css("padding","0px 0px 0px 0px");	
+//		ledTypeVAl = $("#ledtype").val(); 
+//		if(ledTypeVAl<=0){
+//			toastr.warning("Select LED Connection Type.");
+//		}else{	
+//		  $("#generateCode").prop("disabled",false);
+//		  $("#compileCode").prop("disabled",false);
+//		  $("#executeCode").prop("disabled",false);
+//		  $("#downloadCode").prop("disabled",false);	  
+//		  $("#ledtype").prop("disabled",true);	
+//		  
+//		 if(ledTypeVAl == 1 &&  dCycleVal == 1){
+//		
+//		loopcode =	`<p> if (state == HIGH) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;//   Switch is pressed
+//		<p>digitalWrite(ledPin, HIGH );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin HIGN -> sources current -> LED turns ON </p>
+// 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // Switch is released
+//		<p> digitalWrite(ledPin, LOW );    &nbsp; &nbsp; &nbsp; &nbsp;   // Drive LED pin LOW -> no current flows -> LED turns OFF </p>
+// 		<p> } </p>
+//		}`
+//		}else if (ledTypeVAl == 2 &&  dCycleVal == 1) {
+//		loopcode =	`<p> if (state == HIGH) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; //   Switch is pressed
+//		<p>digitalWrite(ledPin, LOW );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin LOW -> sink current -> LED turns ON </p>
+// 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// Switch is released
+//		<p> digitalWrite(ledPin, HIGN );    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  // Drive LED pin HIGH -> no current sink -> LED turns OFF </p>
+// 		<p> } </p>
+//		}`	
+//			
+//		}else if (ledTypeVAl == 1 &&  dCycleVal == 2) {
+//		loopcode =	`<p> if (state == LOW) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;//   Switch is pressed
+//		<p>digitalWrite(ledPin, HIGN  );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin HIGN -> sources current -> LED turns ON </p>
+// 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // Switch is released
+//		<p> digitalWrite(ledPin, LOW);    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;&nbsp; // Drive LED pin LOW -> no current source -> LED turns OFF </p>
+// 		<p> } </p>
+//		}`	
+//			
+//		}else if (ledTypeVAl == 2 &&  dCycleVal == 2) {
+//		loopcode =	`<p> if (state == LOW) { &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;//   Switch is pressed
+//		<p>digitalWrite(ledPin, LOW );      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   //  Drive LED pin LOW -> sink current -> LED turns ON </p>
+// 		<p> } else {						 &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;// Switch is released
+//		<p> digitalWrite(ledPin, HIGN );    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  // Drive LED pin HIGH -> no current flows -> LED turns OFF </p>
+// 		<p> } </p>
+//		}`
+//		}	  	 
+//		}
+//		
+//});
 
 
 
@@ -314,7 +314,7 @@ $("#generateCode").click(function () {
 // 	$("#ledtype").prop("disabled",true);	
 	$("#modelMsg").html("<b class='boldTextGreen'>Code Generated Successfully.</b>");
 	flag=true;
-		
+	$("#compileCode").prop("disabled",false);	
 	$("#codeview").prop("hidden",false);
 	hexValue = calculateHex();
 	var currentdate = new Date(); 
@@ -422,6 +422,7 @@ $("#compileCode").click(function(){
 		$("#modelMsg").html("<b class='boldTextGreen'>Check Terminal Window Below Code for Errors.</b>");
 		var b1 = '<p>Program Compiled Successfully.</p><br><br>'
 		$("#errordemo").html(b1);
+		$("#executeCode").prop("disabled",false);
 	}else{
 		$("#modelMsg").html("<b class='boldTextGreen'>Please Generate The Code First.</b>");
 	}
@@ -438,10 +439,10 @@ $("#executeCode").click(function () {
 			switchConfigSelect= $("#switchConfig").val();
 			$("#canvas-div").html('');
 			$("#canvas-div1").html('');
-			$("#plot").prop("hidden",false);
-			resultJson.configuration = wrongConfig;
+						resultJson.configuration = wrongConfig;
 			console.log(resultJson);
 			mimic(iPinSelect,oPinSelect,switchConfigSelect,LedConSelect);
+			
     
 	}else{
 //		mimic(iPinSelect,oPinSelect,switchConfigSelect,LedConSelect);

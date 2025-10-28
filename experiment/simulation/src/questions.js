@@ -1,6 +1,7 @@
 	
 	$(function() {
 		showQuestions = function() {
+			$(".scope-body").prop("hidden",true);
 		
 			var flag = false;
 			var myRadio = null;
