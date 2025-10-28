@@ -1,5 +1,6 @@
 
 var connectionStatus=0;
+
 $('#canvas-div').removeAttr('width');
 	$('#canvas-div').removeAttr('height');
 	var w =660;
@@ -23,6 +24,7 @@ var y=160;
 
 
 function mimic(){
+	$(".scope-body").prop("hidden",false);
 
     $("#centerText2").html('CONFIGURATION');
     $('#canvas-div').removeAttr('width');
@@ -47,7 +49,6 @@ function mimic(){
 		paper.setSize('100%', '100%');
 	}
 	
-$("#plot").html("");
 //Create the image
 //var checkStatus = paper.image("images/MainImg.png", x - 90, y - 150, 650, 400);
 //
@@ -84,7 +85,7 @@ minus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue
 var disc = paper.image("images/disc2.png", mainX + mainWidth - 60-410, mainY +45, 50, 50);
 var hand = paper.image("images/hand.gif", mainX + mainWidth - 60-400, mainY + 60+260, 50, 50);
 
-var NPN = paper.image("images/NPN.png", mainX + mainWidth - 60-445, mainY + 60+120, 40, 40);
+var NPN = paper.image("images/NPN.png", mainX + mainWidth - 60-436, mainY + 60+153, 30, 30);
 
 var reset = paper.image("images/Capture.png", mainX + mainWidth - 60-100, mainY + 60+320, 100, 40);
 reset.hide();
@@ -168,7 +169,7 @@ rect1.click(function() {
 	// Enable clicks again
 	plus.node.style.pointerEvents = "auto";  
 	plus.attr({ cursor: "pointer", opacity: 1 });  
-	hand.remove();
+	  hand.attr({x:70,y:250});
 	startLabel.remove();
 	minus.node.style.pointerEvents = "auto";  
 	minus.attr({ cursor: "pointer", opacity: 1 });  
@@ -196,7 +197,7 @@ rect2.click(function() {
 	// Enable clicks again
 	plus.node.style.pointerEvents = "auto";  
 	plus.attr({ cursor: "pointer", opacity: 1 });  
-	hand.hide();
+	 hand.attr({x:70,y:250});
 	startLabel.hide();
 	minus.node.style.pointerEvents = "auto";  
 	minus.attr({ cursor: "pointer", opacity: 1 });  
@@ -218,6 +219,9 @@ rect2.click(function() {
 
 });
 reset.click(function() {
+	reset.hide();
+	$("#canvas-div").html("");
+	$("#canvas-div1").html('<img src="images/ardino.png" style="width: 100%;height:100%"   class="img-fluid" ></img>');
 	showQuestions();
 });
 //=== Add text labels inside the Raphael canvas ===
@@ -260,19 +264,19 @@ paper.text(x - 10+120 , y - 120 + 10, "DC Motor").attr({
 	 fill: "black"
 	});
 //=== Component Labels ===
-paper.text(x - 90 + 100, y - 150 + 280, "Potentiometer").attr({
+paper.text(x - 90 + 100, y - 150 + 210, "Potentiometer").attr({
  "font-size": 13,
  "font-family": "Arial",
  fill: "black"
 });
 
-paper.text(x - 90 + 160, y - 150 + 160, "NPN").attr({
+paper.text(x - 90 + 160, y - 150 + 200, "NPN").attr({
  "font-size": 13,
  "font-family": "Arial",
  fill: "black"
 });
 
-paper.text(x - 90 + 320, y - 150 + 150, "OP-AMP IC741").attr({
+paper.text(x - 90 + 170, y - 10 + 150, "OP-AMP IC741").attr({
  "font-size": 13,
  "font-family": "Arial",
  fill: "black"
@@ -368,11 +372,56 @@ plus.attr({ cursor: "pointer" }).click(function () {
 
         if (!rotationInterval) startRotation(); // start rotation if not running
         console.log("Speed increased to", rotationSpeed);
+        const canvas = document.getElementById("oscCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let running = true;
+        let data = [];
+        const maxPoints = 200;
+        const midY = canvas.height / 2;
+        let t = 0;
+      	
+        function generateData() {
+        	$(".t-label").html(value+'mA');
+          // Random square wave
+          const value1 = (Math.sin(t / rotationSpeed) > 0 ? 40 : -40) + (Math.random() * 5 - 2);
+          t++;
+          data.push(value1);
+          if (data.length > maxPoints) data.shift();
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // waveform
+          ctx.beginPath();
+          ctx.strokeStyle = "#1E90FF"; // blue waveform
+          ctx.lineWidth = 2;
+
+          for (let i = 0; i < data.length; i++) {
+            const x = (i / maxPoints) * canvas.width;
+            const y = midY - data[i];
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+
+          ctx.stroke();
+        }
+
+        function loop() {
+          if (!running) return;
+          generateData();
+          draw();
+          requestAnimationFrame(loop);
+        }
+
+        loop();
     }
 });
 
 // === MINUS button decreases speed and current ===
 minus.attr({ cursor: "pointer" }).click(function () {
+	
     if (rotationSpeed > minSpeed) {
     	reset.show();
         rotationSpeed -= 1; // decrease rotation speed
@@ -387,6 +436,50 @@ minus.attr({ cursor: "pointer" }).click(function () {
             console.log("Rotation stopped");
         }
         console.log("Speed decreased to", rotationSpeed);
+        const canvas = document.getElementById("oscCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let running = true;
+        let data = [];
+        const maxPoints = 200;
+        const midY = canvas.height / 2;
+        let t = 0;
+      	
+        function generateData() {
+        	$(".t-label").html(value+'mA');
+          // Random square wave
+          const value1 = (Math.sin(t / rotationSpeed) > 0 ? 40 : -40) + (Math.random() * 5 - 2);
+          t++;
+          data.push(value1);
+          if (data.length > maxPoints) data.shift();
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // waveform
+          ctx.beginPath();
+          ctx.strokeStyle = "#1E90FF"; // blue waveform
+          ctx.lineWidth = 2;
+
+          for (let i = 0; i < data.length; i++) {
+            const x = (i / maxPoints) * canvas.width;
+            const y = midY - data[i];
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+
+          ctx.stroke();
+        }
+
+        function loop() {
+          if (!running) return;
+          generateData();
+          draw();
+          requestAnimationFrame(loop);
+        }
+
+        loop();
     }
 });
 

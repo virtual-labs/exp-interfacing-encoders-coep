@@ -99,6 +99,18 @@
 				
 				</div>
 				
+<div class="scope-body" hidden>
+  <div class="scope-screen">
+    <canvas id="oscCanvas" width="185" height="100"></canvas>
+    <div class="v-label">12.0 V</div>
+    <div class="t-label">10.0 mA</div>
+  </div>
+<!--   <div class="terminals"> -->
+<!--     <div class="terminal red"></div> -->
+<!--     <div class="terminal black"></div> -->
+<!--   </div> -->
+</div>
+				
 			</div>
 		</div>
 		<div class="col-lg-6" id="main-div">
@@ -177,169 +189,6 @@
   </div>
 </div>
 
-
-<script>
-var setRedflag;		
-var statusFlag;	
-
-	var clk_hex = "0x00";
-	var state_p=0;
-		var data = [{
-	  x: [],
-	  y: [],
-	  mode: 'lines',
-	  line: {
-	    color: '#80CAF6'
-	  }
-	}];
-	
-var config = {
-    showLink: false,
-    displayModeBar: false,
-    modeBarButtonsToRemove: ['toImage']
-};
-
-	var layout = {
-	  responsive: true,
-	  width: 600,
-	  height: 250,
-	  title: 'Square Wave Graph',
-	  xaxis: {
-	    range: [0, 10],
-	    title: 'Time (ms)'
-	  },
-	  yaxis: {
-	    range: [-0.2, 6.4],
-	    title: 'Volatge (in V)'
-	  }
-	};
-
-	interval_plot = 0.01;
-	offTime = 0.02;
-	onTime = 0.03+offTime;
-
-	var time = 0;
-
-	var dt = 0.01;
-	var y = 1;
-	state_p=0;
-	  
-	Plotly.newPlot('plot', data, layout, config);
-	var interval_plot;
-	time = 0; y = 0, dt = 0.01;
-	function start(interval_plot,offTime,onTime){				  
-		  data = [{
-		  x: [],
-		  y: [],
-		  mode: 'lines',
-		  line: {
-			color: '#80CAF6'
-		  }
-		}];
-		
-		var config = {
-		showLink: false,
-		displayModeBar: false,
-		modeBarButtonsToRemove: ['toImage']
-		};
-		
-		var layout = {
-		  responsive: true,
-		  width: 600,
-		  height: 250,
-		  title: 'Square Wave Graph',
-		  xaxis: {
-			range: [0, 10],
-			title: 'Time (ms)'
-		  },
-		  yaxis: {
-			range: [-0.2, 6.4],
-			title: 'Volatge (in V)'
-		  }
-		};
-		 
-		Plotly.update('plot', data, layout, config);
-		   interval_plot = setInterval(function() {
-		  time += dt;
-		
-		  if(setRedflag == true && statusFlag == true){
-			y = 5;
-			if(dCycleVal == 1){
-			if (ledTypeVAl == 1){
-				
-			LedImg2=paper.image("images/ON_aquaLed2.png", 385, 385, 85, 85);	
-			
-			}else{
-				
-				LedImg2=paper.image("images/ledMirror.png", 385, 386.2, 85, 85);	
-			}
-			}else{
-				if (ledTypeVAl == 1){
-					LedImg2=paper.image("images/offDiode.png", 385, 385, 85, 85);	
-					}else{
-				
-				LedImg2=paper.image("images/LedoffMirror.png", 385, 386.4, 85, 85);
-					}
-			}
-		  }else{
-			y = 0;
-			if(dCycleVal == 1){
-			if (ledTypeVAl == 1){
-				LedImg2=paper.image("images/offDiode.png", 385, 385, 85, 85);	
-				}else{
-			
-			LedImg2=paper.image("images/LedoffMirror.png", 385, 386.4, 85, 85);
-				}
-			}else{
-				if (ledTypeVAl == 1){
-					
-					LedImg2=paper.image("images/ON_aquaLed2.png", 385, 385, 85, 85);	
-					}else{
-						
-						LedImg2=paper.image("images/ledMirror.png", 385, 386.2, 85, 85);	
-					}
-				}
-		  }
-		 
-		  
-		  Plotly.extendTraces('plot', {x: [[time]], y: [[y]]}, [0]);
-		  if (time > 10) {
-			Plotly.relayout('plot', {
-			  xaxis: {
-				range: [time-10, time],
-				title: 'Time (ms)'
-			  }
-			});
-		  }
-	}, dt*100);
-	//start_e =0;
-	
-	}
-		 //Plotly.extendTraces('plot', {x: [[time]], y: [[y]]}, [0]);
-	  function reset() {
-			clearInterval(time);
-			clearInterval(interval_plot);
-		   // Plotly.deleteTraces('plot',0);
-				//var data1 = [{
-				//  x: [],
-				//  y: [],
-				//  mode: 'lines',
-				//  line: {
-				//	color: '#80CAF6'
-				// }
-				//}];		
-		      var time = 0;		
-			//Plotly.newPlot('plot', data1, layout, config);	
-		      state_p=1;
-				//start(1,0,1);
-				
-		      
-		  } 
-		function pause(){
-		  clearInterval(interval_plot);
-		}
-
-</script>
 <script>
     document.getElementById('refresh').addEventListener('click', function() {
         location.reload();
@@ -369,6 +218,7 @@ var config = {
 <script type="text/javascript" src="src/mimic.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="src/toastr.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="src/timer.js"></script>
 <script src="src/result.js"></script>
 
@@ -393,8 +243,9 @@ var config = {
 </script>
 
 <script>
+
 $(document).ready(function() {
-// 	$("#canvas-div1").html("");
+//  	$("#canvas-div1").html("");
 // 	mimic();
 });
   // Simple Swal function
@@ -410,5 +261,9 @@ $(document).ready(function() {
 	    });
   }
 </script>
-
+<script>
+$(document).ready(function() {
+ 
+});
+</script>
 </html>
