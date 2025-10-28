@@ -153,21 +153,13 @@ var rect5 = paper.rect(x - 105 + (90 * 0.6), y - 150 + (200 * 0.7), 35, 15).attr
 
 // Draw a line from dot1 to dot2 after clicking on dot1
 var line = null; // This will store the line object
-
+var dot2X=0;
+var dot2Y=0;
 dot1.click(function() {
-    if (!line) {
-        // Control points for the Bezier curve
-        var controlX1 = dot1X + 100; // X offset for the first control point
-        var controlY1 = dot1Y - 50;  // Y offset for the first control point
-        var controlX2 = dot2X - 100; // X offset for the second control point
-        var controlY2 = dot2Y + 50;  // Y offset for the second control point
-
-        // Create the Bezier curve path
-        line = paper.path("M" + dot1X + "," + dot1Y + " C" + controlX1 + "," + controlY1 + "," + controlX2 + "," + controlY2 + "," + dot2X + "," + dot2Y).attr({
-            stroke: "green",  // Line color
-            strokeWidth: 2
-        });
-    }
+  
+    hand.attr({x:385,y:315});
+    
+    startLabel.hide();
 });
 
 // When rect1 or rect2 is clicked, connect the line to dot1 and log the name
@@ -190,9 +182,13 @@ rect1.click(function() {
         stroke: "green",
         strokeWidth: 2
     });
+    
 
     // Log the name of the rectangle connected
     console.log("Connected to " + rectName);
+    rect2.unclick();
+   
+
 });
 
 rect2.click(function() {
@@ -218,6 +214,8 @@ rect2.click(function() {
 
     // Log the name of the rectangle connected
     console.log("Connected to " + rectName);
+    rect1.unclick();
+
 });
 reset.click(function() {
 	showQuestions();
