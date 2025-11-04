@@ -432,6 +432,7 @@ $("#compileCode").click(function(){
 $("#executeCode").click(function () {
 	wrongConfig++;
 	if(compileflag==true){
+		$("#downloadCode").prop("disabled",false);
 		$("#modelMsg").html("<b class='boldTextGreen'>Code Executed Successfully.</b>");
 			iPinSelect = $("#inputPinName").val();
 			oPinSelect = $("#outputPinName").val();
