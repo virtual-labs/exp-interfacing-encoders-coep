@@ -381,14 +381,14 @@ plus.attr({ cursor: "pointer" }).click(function () {
         const midY = canvas.height / 2;
         let t = 0;
       	
-        function generateData() {
-        	$(".t-label").html(value+'mA');
-          // Random square wave
-          const value1 = (Math.sin(t / rotationSpeed) > 0 ? 40 : -40) + (Math.random() * 5 - 2);
-          t++;
-          data.push(value1);
-          if (data.length > maxPoints) data.shift();
-        }
+//        function generateData() {
+//        	$(".t-label").html(value+'mA');
+//          // Random square wave
+//          const value1 = (Math.sin(t / rotationSpeed) > 0 ? 40 : -40) + (Math.random() * 5 + 2);
+//          t++;
+//          data.push(value1);
+//          if (data.length > maxPoints) data.shift();
+//        }
 
         function draw() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -407,7 +407,44 @@ plus.attr({ cursor: "pointer" }).click(function () {
 
           ctx.stroke();
         }
+//        function generateData() {
+//        	  $(".t-label").html(value + 'mA');
+//
+//        	  // Random square wave with small noise
+//        	  const value1 = (Math.sin(t / rotationSpeed) > 0 ? 40 : -40) + (Math.random() * 5 + 2);
+//
+//        	  // Adjust spacing dynamically:
+//        	  // When value1 is larger → smaller step → waveform more dense
+//        	  // When value1 is smaller → larger step → waveform more spread
+////        	  let spacingFactor = Math.max(0.5, 5 - Math.abs(value1) / 5); 
+//        	  
+//        	  let spacingFactor = Math.max(0.5, 5 - Math.abs(value1) / 10);
+//
+//        	  t += spacingFactor;  // variable spacing based on signal amplitude
+//
+//        	  data.push(value1);
+//        	  if (data.length > maxPoints) data.shift();
+//        	}
+        function generateData() {
+        	  $(".t-label").html(value + 'mA');
 
+        	  // Use 'value' to control spacing / frequency
+        	  // Lower value → slower wave (more space)
+        	  // Higher value → faster wave (less space)
+        	  const frequency = value / 100; // adjust sensitivity here
+
+        	  // Generate square-like wave using frequency
+        	  const value1 = (Math.sin(t * frequency) > 0 ? 40 : -40) + (Math.random() * 5 + 2);
+
+        	  t += 0.1; // fixed time increment per frame
+
+        	  data.push(value1);
+        	  if (data.length > maxPoints) data.shift();
+        	}
+
+        
+        
+        
         function loop() {
           if (!running) return;
           generateData();
