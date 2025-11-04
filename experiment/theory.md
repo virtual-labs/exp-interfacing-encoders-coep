@@ -21,7 +21,7 @@ The general formula is:
 **Formula Works:**
 The formula works by first converting the pulses into revolutions and then scaling that result to a minute.
 1.	Pulses to Revolutions: The first part of the formula converts the total pulse count into revolutions.<br>
-![*formula2* ](images/formula2.png)<br>
+![*formula2* ](images/formula2.PNG)<br>
 The Simplified Formula using Code
 Because code uses of 1000ms (a second) Interval and a PPR of 20, the formula simplifies significantly.
 In short Formula for,                Pulses=   (Number of  RPM)/3
