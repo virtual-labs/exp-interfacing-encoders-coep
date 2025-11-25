@@ -26,7 +26,8 @@ var y=160;
 function mimic(){
 	$(".scope-body").prop("hidden",false);
 
-    $("#centerText2").html('CONFIGURATION');
+   $("#centerText1").html("MIMIC");
+		$("#centerText2").html("CONFIGURATION");
     $('#canvas-div').removeAttr('width');
 	$('#canvas-div').removeAttr('height');
 	$("#generateCode,#compileCode,#executeCode").prop('disabled',true);
