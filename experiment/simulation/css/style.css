@@ -182,3 +182,12 @@ background: linear-gradient(90deg, rgba(125,176,169,1) 0%, rgba(78,109,114,1) 31
         border:none; 
         border-radius: 5px;
         }
+		.correctAnswer {
+    color: green !important;
+    font-weight: bold;
+}
+
+.wrongAnswer {
+    color: red !important;
+    text-decoration: line-through;
+}

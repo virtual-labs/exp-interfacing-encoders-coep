@@ -1,4 +1,4 @@
-An Encoder is a sensor that translates mechanical motion into an electronic signal. Encoders are fundamental to control systems, providing critical feedback on position, speed, and direction. This project uses an Incremental encoder, which generates a series of digital pulses as its shaft rotates. These pulses are counted to determine the motor's speed.<br>
+An Incremental Encoder is a sensor that translates mechanical motion into an electronic signal.This project uses an Incremental encoder, which generates a series of digital pulses as its shaft rotates. These pulses are counted to determine the motor's speed.<br>
 ![*image* ](images/a.png)<br>
 The core of an incremental encoder's operation lies in its simple design: a rotating disk with precisely spaced holes or slots, and an optical sensor consisting of an IR Emitter and an IR Receiver.<br>
 •	**IR Emitter**: An infrared LED that sends out a beam of infrared light.<br>
@@ -41,7 +41,7 @@ Applications:
 -	Power Sources: 12V DC Power Supply and 5V DC Power Supply (from Arduino)
 
 **Microcontroller Connections**
-The microcontroller serves as the project's central processing unit, receiving input from the encoder and controlling the display.
+-   The microcontroller serves as the project's central processing unit, receiving input from the encoder and controlling the display.
 -	Incremental Encoder: The encoder's output signal is connected to the Arduino's digital pin 2 & 3, which is configured as an interrupt pin to efficiently count pulses.
 -	I2C LCD Display: The display is connected to the Arduino using the I2C protocol, which simplifies wiring by using only four pins: VCC, GND, SDA (A4), and SCL (A5).
 -	Potentiometer: The potentiometer is connected in the motor's power circuit to regulate the motor's speed. The Op-Amp and NPN transistor are connected between the potentiometer and the Arduino to condition the signal from the encoder.
