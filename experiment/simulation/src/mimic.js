@@ -64,7 +64,7 @@ var mainY = y - 150;
 var mainWidth = 650;
 var mainHeight = 400;
 
-var checkStatus = paper.image("images/MainImg.png", mainX, mainY, mainWidth, mainHeight);
+var checkStatus = paper.image("images/basicDia.jpeg", mainX, mainY, mainWidth, mainHeight);
 
 // Add overlay images (plus & minus)
 //var plus = paper.image("images/plus.png", mainX + mainWidth - 60-510, mainY + 20+220, 10, 10);
@@ -72,25 +72,25 @@ var checkStatus = paper.image("images/MainImg.png", mainX, mainY, mainWidth, mai
 //plus.unclick(); // removes all click events
 //plus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue (grayed out)
 
-var plus = paper.image("images/plus.png", mainX + mainWidth - 60 - 510, mainY + 20 + 220, 10, 10);
+var plus = paper.image("images/plus.png", mainX + mainWidth - 60 - 385, mainY + 60 + 50, 10, 10);
 
 //Make 'plus' image completely non-clickable
 plus.node.style.pointerEvents = "none"; // disables all mouse events
 plus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue
 
-var minus = paper.image("images/minus.png", mainX + mainWidth - 60-465, mainY + 60+180, 10, 10);
+var minus = paper.image("images/minus.png", mainX + mainWidth - 60-365, mainY + 60+50, 10, 10);
 //Make 'plus' image completely non-clickable
 minus.node.style.pointerEvents = "none"; // disables all mouse events
 minus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue
 
-var disc = paper.image("images/disc2.png", mainX + mainWidth - 60-410, mainY +45, 50, 50);
-var hand = paper.image("images/hand.gif", mainX + mainWidth - 60-400, mainY + 60+260, 50, 50);
+var disc = paper.image("images/disc2.png", mainX + mainWidth - 60-550, mainY +45, 100, 100);
+var hand = paper.image("images/hand.gif", mainX + mainWidth - 60-510, mainY + 60+260, 50, 50);
 
-var NPN = paper.image("images/NPN.png", mainX + mainWidth - 60-436, mainY + 60+153, 30, 30);
+//var NPN = paper.image("images/NPN.png", mainX + mainWidth - 60-436, mainY + 60+153, 30, 30);
 
 var reset = paper.image("images/Capture.png", mainX + mainWidth - 60-100, mainY + 60+320, 100, 40);
 reset.hide();
-var startLabel=paper.text( mainX + mainWidth - 60-400, mainY + 60+310, "Connect this pin").attr({
+var startLabel=paper.text( mainX + mainWidth - 60-470, mainY + 60+310, "Connect this pin").attr({
 	 "font-size": 13,
 	 "font-family": "Arial",
 	 fill: "red"
@@ -105,7 +105,7 @@ minus.toFront();
 
 
 // Position of the two dots (relative to the image size)
-var dot1X = x - 90 + (650 * 0.33); // 33% from the left
+var dot1X = x - 90 + (650 * 0.16); // 33% from the left
 var dot1Y = y - 150 + (400 * 0.77); // 77% from the top
 
 //var dot2X = x - 90 + (500 * 0.77); // 77% from the left
@@ -135,23 +135,23 @@ var rect2 = paper.rect(x - 90 + (650 * 0.6), y - 150 + (443 * 0.7), 10, 5).attr(
     cursor: "pointer"
 }).data("name", "Rectangle 2");  // Attach a name to the rectangle
 //=== Add 3 more rectangles ===
-var rect3 = paper.rect(x - 20 + (650 * 0.6), y - 205 + (451 * 0.7), 155, 50).attr({
-    fill: "#3765b2",
-    stroke: "none",
-    cursor: "pointer"
-}).data("name", "Rectangle 3");
+//var rect3 = paper.rect(x - 20 + (650 * 0.6), y - 205 + (451 * 0.7), 155, 50).attr({
+//    fill: "#3765b2",
+//    stroke: "none",
+//    cursor: "pointer"
+//}).data("name", "Rectangle 3");
 
-var rect4 = paper.rect(x - 105 + (90 * 0.6), y - 150 + (170 * 0.7), 35, 15).attr({
-    fill: "#c2c4c3",
-    stroke: "none",
-    cursor: "pointer"
-}).data("name", "Rectangle 4");
-
-var rect5 = paper.rect(x - 105 + (90 * 0.6), y - 150 + (200 * 0.7), 35, 15).attr({
-    fill: "#c2c4c3",
-    stroke: "none",
-    cursor: "pointer"
-}).data("name", "Rectangle 5");
+//var rect4 = paper.rect(x - 105 + (90 * 0.6), y - 150 + (170 * 0.7), 35, 15).attr({
+//    fill: "#c2c4c3",
+//    stroke: "none",
+//    cursor: "pointer"
+//}).data("name", "Rectangle 4");
+//
+//var rect5 = paper.rect(x - 105 + (90 * 0.6), y - 150 + (200 * 0.7), 35, 15).attr({
+//    fill: "#c2c4c3",
+//    stroke: "none",
+//    cursor: "pointer"
+//}).data("name", "Rectangle 5");
 
 // Draw a line from dot1 to dot2 after clicking on dot1
 var line = null; // This will store the line object
@@ -170,7 +170,7 @@ rect1.click(function() {
 	// Enable clicks again
 	plus.node.style.pointerEvents = "auto";  
 	plus.attr({ cursor: "pointer", opacity: 1 });  
-	  hand.attr({x:70,y:250});
+	  hand.attr({x:205,y:130});
 	startLabel.remove();
 	minus.node.style.pointerEvents = "auto";  
 	minus.attr({ cursor: "pointer", opacity: 1 });  
@@ -198,7 +198,7 @@ rect2.click(function() {
 	// Enable clicks again
 	plus.node.style.pointerEvents = "auto";  
 	plus.attr({ cursor: "pointer", opacity: 1 });  
-	 hand.attr({x:70,y:250});
+	 hand.attr({x:205,y:130});
 	startLabel.hide();
 	minus.node.style.pointerEvents = "auto";  
 	minus.attr({ cursor: "pointer", opacity: 1 });  
@@ -228,15 +228,15 @@ reset.click(function() {
 //=== Add text labels inside the Raphael canvas ===
 
 //Voltage, Current, RPM, and Power display values
-var displayText1 = paper.text(x - 90 + 40, y - 150 + 130, "12.0V").attr({
- "font-size": 12,
- "font-family": "Arial",
- "font-weight": "bold",
- fill: "#000",
- "text-anchor": "start"   // Align left
-});
-
-var displayText2 = paper.text(x - 90 + 40, y - 150 + 150, "00mA").attr({
+//var displayText1 = paper.text(x - 90 + 40, y - 150 + 130, "12.0V").attr({
+// "font-size": 12,
+// "font-family": "Arial",
+// "font-weight": "bold",
+// fill: "#000",
+// "text-anchor": "start"   // Align left
+//});
+//
+var displayText2 = paper.text(x - 90 + 205, y - 130 + 70, "00mA").attr({
  "font-size": 12,
  "font-family": "Arial",
  "font-weight": "bold",
@@ -244,7 +244,7 @@ var displayText2 = paper.text(x - 90 + 40, y - 150 + 150, "00mA").attr({
  "text-anchor": "start"
 });
 
-var displayText3 = paper.text(x - 90 + 500, y - 150 + 270, "00.00").attr({
+var displayText3 = paper.text(x - 90 + 530, y - 150 + 300, "00.00").attr({
  "font-size": 12,
  "font-family": "Arial",
  "font-weight": "bold",
@@ -252,60 +252,60 @@ var displayText3 = paper.text(x - 90 + 500, y - 150 + 270, "00.00").attr({
  "text-anchor": "start"
 });
 
-var displayText4 = paper.text(x - 90 + 500, y - 150 + 290, "00.00").attr({
+var displayText4 = paper.text(x - 90 + 530, y - 110 + 280, "00.00").attr({
  "font-size": 12,
  "font-family": "Arial",
  "font-weight": "bold",
  fill: "#fff",
  "text-anchor": "start"
 });
-paper.text(x - 10+120 , y - 120 + 10, "DC Motor").attr({
-	 "font-size": 13,
-	 "font-family": "Arial",
-	 fill: "black"
-	});
+//paper.text(x - 10+120 , y - 120 + 10, "DC Motor").attr({
+//	 "font-size": 13,
+//	 "font-family": "Arial",
+//	 fill: "black"
+//	});
 //=== Component Labels ===
-paper.text(x - 90 + 100, y - 150 + 210, "Potentiometer").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
+//paper.text(x - 90 + 100, y - 150 + 210, "Potentiometer").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
+//
+//paper.text(x - 90 + 160, y - 150 + 200, "NPN").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
+//
+//paper.text(x - 90 + 170, y - 10 + 150, "OP-AMP IC741").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
 
-paper.text(x - 90 + 160, y - 150 + 200, "NPN").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
+//paper.text(x - 10 , y - 150 + 100, "12V Power supply").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
+//
+//paper.text(x - 90 + 50, y - 150 + 180, "(+ve)").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
 
-paper.text(x - 90 + 170, y - 10 + 150, "OP-AMP IC741").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
+//paper.text(x - 90 + 90, y - 150 + 180, "(-ve)").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
 
-paper.text(x - 10 , y - 150 + 100, "12V Power supply").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
-
-paper.text(x - 90 + 50, y - 150 + 180, "(+ve)").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
-
-paper.text(x - 90 + 90, y - 150 + 180, "(-ve)").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
-
-paper.text(x - 50 + 460, y - 170 + 250, "LCD Display (I2C)").attr({
- "font-size": 13,
- "font-family": "Arial",
- fill: "black"
-});
+//paper.text(x - 50 + 460, y - 170 + 250, "LCD Display (I2C)").attr({
+// "font-size": 13,
+// "font-family": "Arial",
+// fill: "black"
+//});
 
 //Function to make a shape blink
 function blink(element) {
@@ -408,6 +408,7 @@ plus.attr({ cursor: "pointer" }).click(function () {
 
           ctx.stroke();
         }
+        
 //        function generateData() {
 //        	  $(".t-label").html(value + 'mA');
 //
@@ -458,6 +459,73 @@ plus.attr({ cursor: "pointer" }).click(function () {
 });
 
 // === MINUS button decreases speed and current ===
+//minus.attr({ cursor: "pointer" }).click(function () {
+//	
+//    if (rotationSpeed > minSpeed) {
+//    	reset.show();
+//        rotationSpeed -= 1; // decrease rotation speed
+//        value -= 50;        // decrease current
+//        if (value < 0) value = 0; // no negative current
+//        updateDisplay();
+//
+//        if (rotationSpeed === 0) {
+//        	reset.hide();
+//            stopRotation();
+//            
+//            console.log("Rotation stopped");
+//        }
+//        console.log("Speed decreased to", rotationSpeed);
+//        const canvas = document.getElementById("oscCanvas");
+//        const ctx = canvas.getContext("2d");
+//        
+//        let running = true;
+//        let data = [];
+//        const maxPoints = 200;
+//        const midY = canvas.height / 2;
+//        let t = 0;
+//      	
+//        function generateData() {
+//        	$(".t-label").html(value+'mA');
+//          // Random square wave
+//          const value1 = (Math.sin(t / rotationSpeed) > 0 ? 40 : -40) + (Math.random() * 5 - 2);
+//          t++;
+//          data.push(value1);
+//          if (data.length > maxPoints) data.shift();
+//        }
+//
+//        function draw() {
+//        	  ctx.clearRect(0, 0, canvas.width, canvas.height);
+//
+//        	  const xOffset = 120; 
+//        	  const yOffset = 300;
+//
+//        	  ctx.beginPath();
+//        	  ctx.strokeStyle = "#1E90FF";
+//        	  ctx.lineWidth = 2;
+//
+//        	  for (let i = 0; i < data.length; i++) {
+//        	    const x = xOffset + (i / maxPoints) * canvas.width;
+//        	    const y = yOffset + (midY - data[i]);
+//
+//        	    if (i === 0) ctx.moveTo(x, y);
+//        	    else ctx.lineTo(x, y);
+//        	  }
+//
+//        	  ctx.stroke();
+//        	}
+//
+//
+//        function loop() {
+//          if (!running) return;
+//          generateData();
+//          draw();
+//          requestAnimationFrame(loop);
+//        }
+//
+//        loop();
+//    }
+//});
+//=== MINUS button decreases speed and current ===
 minus.attr({ cursor: "pointer" }).click(function () {
 	
     if (rotationSpeed > minSpeed) {
