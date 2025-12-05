@@ -24,7 +24,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "What is the main role of the Op-Amp and NPN transistor in your circuit?",
+      "question": "What is the main role of the NPN transistor in your circuit?",
       "answers": {
         "a": "To provide power to the Arduino.",
         "b": "To decrease the motor’s speed.",

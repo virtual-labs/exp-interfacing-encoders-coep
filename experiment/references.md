@@ -6,4 +6,4 @@
 
 - Scherz, P., & Monk, S. (2017). Practical Electronics for Inventors (4th ed.). McGraw-Hill Education. ISBN: 9781259587541.
 
-- Rossi, C., Toscani, A., Dezza, A., & Mauri, P. (2023). Introduction to Microcontroller Programming for Power Electronics Control Applications: Coding with MATLAB® and Simulink®. CRC Press (Routledge). ISBN: 9781032053035
+- A.K. Sawhney (co-authored with Puneet Sawhney in newer editions) :A Course in Electrical and Electronic Measurements and Instrumentation, ISBN: 9780000279744
