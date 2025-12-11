@@ -64,7 +64,7 @@ var mainY = y - 150;
 var mainWidth = 650;
 var mainHeight = 400;
 
-var checkStatus = paper.image("images/basicDia.jpeg", mainX, mainY, mainWidth, mainHeight);
+var checkStatus = paper.image("images/mainImg2.jpg", mainX, mainY, mainWidth, mainHeight);
 
 // Add overlay images (plus & minus)
 //var plus = paper.image("images/plus.png", mainX + mainWidth - 60-510, mainY + 20+220, 10, 10);
@@ -72,25 +72,25 @@ var checkStatus = paper.image("images/basicDia.jpeg", mainX, mainY, mainWidth, m
 //plus.unclick(); // removes all click events
 //plus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue (grayed out)
 
-var plus = paper.image("images/plus.png", mainX + mainWidth - 60 - 385, mainY + 60 + 50, 10, 10);
+var plus = paper.image("images/plus.png", mainX + mainWidth - 60 - 436, mainY + 70 + 50, 15, 15);
 
 //Make 'plus' image completely non-clickable
 plus.node.style.pointerEvents = "none"; // disables all mouse events
 plus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue
 
-var minus = paper.image("images/minus.png", mainX + mainWidth - 60-365, mainY + 60+50, 10, 10);
+var minus = paper.image("images/minus.png", mainX + mainWidth - 60-415, mainY + 70+50, 15,15);
 //Make 'plus' image completely non-clickable
 minus.node.style.pointerEvents = "none"; // disables all mouse events
 minus.attr({ cursor: "default", opacity: 0.5 }); // optional visual cue
 
-var disc = paper.image("images/disc2.png", mainX + mainWidth - 60-550, mainY +45, 100, 100);
-var hand = paper.image("images/hand.gif", mainX + mainWidth - 60-510, mainY + 60+260, 50, 50);
+var disc = paper.image("images/disc2.png", mainX + mainWidth - 60-574, mainY +47, 85, 85);
+var hand = paper.image("images/hand.gif", mainX + mainWidth - 60-545, mainY + 60+260, 50, 50);
 
 //var NPN = paper.image("images/NPN.png", mainX + mainWidth - 60-436, mainY + 60+153, 30, 30);
 
 var reset = paper.image("images/Capture.png", mainX + mainWidth - 60-100, mainY + 60+320, 100, 40);
 reset.hide();
-var startLabel=paper.text( mainX + mainWidth - 60-470, mainY + 60+310, "Connect this pin").attr({
+var startLabel=paper.text( mainX + mainWidth - 60-500, mainY + 60+310, "Connect this pin").attr({
 	 "font-size": 13,
 	 "font-family": "Arial",
 	 fill: "red"
@@ -105,8 +105,8 @@ minus.toFront();
 
 
 // Position of the two dots (relative to the image size)
-var dot1X = x - 90 + (650 * 0.16); // 33% from the left
-var dot1Y = y - 150 + (400 * 0.77); // 77% from the top
+var dot1X = x - 90 + (650 * 0.11); // 33% from the left
+var dot1Y = y - 150 + (400 * 0.79); // 77% from the top
 
 //var dot2X = x - 90 + (500 * 0.77); // 77% from the left
 //var dot2Y = y - 150 + (510 * 0.69); // 69% from the top
@@ -123,13 +123,13 @@ var dot1 = paper.circle(dot1X, dot1Y, 5).attr({
 //});
 
 // Create two rectangles on the image
-var rect1 = paper.rect(x - 90 + (650 * 0.6), y - 150 + (435 * 0.7), 10, 5).attr({
+var rect1 = paper.rect(x - 90 + (650 * 0.6), y - 143 + (435 * 0.7), 10, 5).attr({
     fill: "green",
     stroke: "none",
     cursor: "pointer"
 }).data("name", "Rectangle 1");  // Attach a name to the rectangle
 
-var rect2 = paper.rect(x - 90 + (650 * 0.6), y - 150 + (443 * 0.7), 10, 5).attr({
+var rect2 = paper.rect(x - 90 + (650 * 0.6), y - 140 + (443 * 0.7), 10, 5).attr({
     fill: "green",
     stroke: "none",
     cursor: "pointer"
@@ -159,7 +159,7 @@ var dot2X=0;
 var dot2Y=0;
 dot1.click(function() {
   
-    hand.attr({x:385,y:315});
+    hand.attr({x:385,y:325});
     
     startLabel.hide();
 });
@@ -170,7 +170,7 @@ rect1.click(function() {
 	// Enable clicks again
 	plus.node.style.pointerEvents = "auto";  
 	plus.attr({ cursor: "pointer", opacity: 1 });  
-	  hand.attr({x:205,y:130});
+	  hand.attr({x:160,y:145});
 	startLabel.remove();
 	minus.node.style.pointerEvents = "auto";  
 	minus.attr({ cursor: "pointer", opacity: 1 });  
@@ -188,17 +188,19 @@ rect1.click(function() {
 
     // Log the name of the rectangle connected
     console.log("Connected to " + rectName);
+    rect1.unclick();
     rect2.unclick();
    
 
 });
 
 rect2.click(function() {
+	
 	connectionStatus=1;
 	// Enable clicks again
 	plus.node.style.pointerEvents = "auto";  
 	plus.attr({ cursor: "pointer", opacity: 1 });  
-	 hand.attr({x:205,y:130});
+	 hand.attr({x:160,y:145});
 	startLabel.hide();
 	minus.node.style.pointerEvents = "auto";  
 	minus.attr({ cursor: "pointer", opacity: 1 });  
@@ -208,17 +210,31 @@ rect2.click(function() {
     var rectCenterX = rect2.attr("x") + rect2.attr("width") / 2;
     var rectCenterY = rect2.attr("y") + rect2.attr("height") / 2;
 
-    // Create the connection line
-    var connectLine = paper.path("M" + dot1X + "," + dot1Y + " L" + rectCenterX + "," + rectCenterY).attr({
-        stroke: "green",
-        strokeWidth: 2
+    const startX = dot1X, startY = dot1Y;
+    const endX = rect2.attr("x") + rect2.attr("width")/2;
+    const endY = rect2.attr("y") + rect2.attr("height")/2;
+
+    // Example: go horizontally from start, then vertically, then horizontally to end
+    const midX = startX + 50;                  // adjust the “50” as needed
+    const midY = endY;
+
+    const pathString = [
+      "M", startX, startY,
+      "L", midX, startY,
+      "L", midX, midY,
+      "L", endX, endY
+    ].join(" ");
+
+    const connectLine = paper.path(pathString).attr({
+      stroke: "green",
+      strokeWidth: 2
     });
-
-    // Log the name of the rectangle connected
-    console.log("Connected to " + rectName);
     rect1.unclick();
-
+    rect2.unclick();
+    // rest of your code...
+    
 });
+
 reset.click(function() {
 	reset.hide();
 	$("#canvas-div").html("");
@@ -236,15 +252,16 @@ reset.click(function() {
 // "text-anchor": "start"   // Align left
 //});
 //
-var displayText2 = paper.text(x - 90 + 205, y - 130 + 70, "00mA").attr({
- "font-size": 12,
+var displayText2 = paper.text(x - 90 + 155, y - 110 + 70, "00mA").attr({
+ "font-size": 10,
  "font-family": "Arial",
  "font-weight": "bold",
- fill: "#000",
+ fill: "blue",
  "text-anchor": "start"
+	 
 });
 
-var displayText3 = paper.text(x - 90 + 530, y - 150 + 300, "00.00").attr({
+var displayText3 = paper.text(x - 90 + 510, y - 140 + 300, "RPM : 00.00").attr({
  "font-size": 12,
  "font-family": "Arial",
  "font-weight": "bold",
@@ -252,7 +269,7 @@ var displayText3 = paper.text(x - 90 + 530, y - 150 + 300, "00.00").attr({
  "text-anchor": "start"
 });
 
-var displayText4 = paper.text(x - 90 + 530, y - 110 + 280, "00.00").attr({
+var displayText4 = paper.text(x - 90 + 510, y - 135 + 280, "PULSES : 00.00").attr({
  "font-size": 12,
  "font-family": "Arial",
  "font-weight": "bold",
