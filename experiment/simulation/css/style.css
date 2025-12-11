@@ -71,8 +71,8 @@
  /* Position the oscilloscope overlay */
   .scope-body {
   position: absolute;
-    top: 4%;
-    left: 64%;
+    top: 7%;
+    left: 67%;
     width: 22%;
     height: 7%;
     background: #f5b913;
