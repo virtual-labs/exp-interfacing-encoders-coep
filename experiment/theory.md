@@ -1,37 +1,3 @@
-An Incremental Encoder is a sensor that translates mechanical motion into an electronic signal.This project uses an Incremental encoder, which generates a series of digital pulses as its shaft rotates. These pulses are counted to determine the motor's speed.<br>
-![*image* ](images/a.png)<br>
-The core of an incremental encoder's operation lies in its simple design: a rotating disk with precisely spaced holes or slots, and an optical sensor consisting of an IR Emitter and an IR Receiver.<br>
-•	**IR Emitter**: An infrared LED that sends out a beam of infrared light.<br>
-•	**IR Receiver:** A phototransistor that detects the infrared light.<br>
-As the encoder's disk rotates with the motor's shaft, the holes allow the IR light to pass through, creating a digital pulse (HIGH signal) for each hole detected. The number of holes on the disk determines the Pulses Per Revolution (PPR). In your code, the PPR is set to 20, meaning the encoder generates 20 pulses for every full revolution of the motor shaft.
-Because the encoder's raw output is often a weak or "noisy" signal, it must be conditioned before the Arduino can read it reliably. This is where the Op-Amp and NPN transistor come in:<br>
-•	**NPN Transistor**: It acts as a switch and amplifier, allowing the Arduino's low-power signal to drive the motor and other components. The transistor ensures a strong, reliable signal is sent to the Arduino’s interrupt pin.<br>
-The Arduino then uses a hardware interrupt to count the pulses. An interrupt is a highly efficient method where the Arduino's hardware automatically executes a specific function, the Interrupt Service Routine (ISR), every time a pulse is detected on its designated interrupt pin (digital pin 2 and 3). This prevents the Arduino from missing pulses, which is crucial for accurate speed measurement.
-The final RPM is calculated based on the number of pulses counted within a specific time interval (give 1 second in code). This calculation provides a direct and accurate measurement of the motor's speed, which is then displayed on the LCD.<br>
-
-**Formula in Detail**
-The core formula is based on three main variables: the number of pulses counted, the encoder's PPR (Pulses Per Revolution), and the time interval over which the pulses were counted.<br>
-The general formula is:
-![*formula* ](images/formula.png)<br>
--	Number of Pulses (Count): This is the total number of pulses that the Arduino's interrupt service routine (ISR) counts during the measurement period. This value is directly proportional to the motor's speed the faster the motor spins, the more pulses the encoder generates.
--	PPR (Pulses Per Revolution): This is a fixed value determined by the encoder's hardware.  In project uses an encoder with 20 PPR, meaning it produces 20 pulses for every full rotation of the motor shaft.
--	Time Interval in Seconds: This is the fixed duration during which the Arduino counts the pulses. In code sets the interval to 1000 milliseconds, which is equal to a second.<br>
-
-**Formula Works:**
-The formula works by first converting the pulses into revolutions and then scaling that result to a minute.
-1.	Pulses to Revolutions: The first part of the formula converts the total pulse count into revolutions.<br>
-![*formula2* ](images/formula2.PNG)<br>
-The Simplified Formula using Code
-Because code uses of 1000ms (a second) Interval and a PPR of 20, the formula simplifies significantly.
-In short Formula for,                Pulses=   (Number of  RPM)/3
-In short Formula for,              RPM= Pulses ×3
-Applications:
-1.	Robotics: Used in robotic arms and mobile robots to monitor the precise angle and speed of joints and wheels, ensuring accurate movement and positioning.
-2.	CNC Machines: for precision control of cutting tools and workpieces, ensuring that movements are accurate and repeatable.
-3.	Industrial Automation: Used on conveyor belts to measure the speed of materials, on assembly lines for synchronized movements, and in packaging machinery to control the rate of production.
-4.	Printers and Plotters: Encoders are used to control the movement of the print head carriage, ensuring that text and images are printed in the correct position.
-5.	Automotive Industry: Anti-lock braking systems (ABS) to measure wheel speed and in power steering systems to detect the rotation of the steering wheel.
-
 Incremental encoders belong to the family of . They are used to obtain rotarty encoders.
 They are used to obtain information such as:
 - Position
@@ -116,72 +82,39 @@ measurement of the motor's speed, which is then displayed on the LCD.
 
 
 **Formula in Detail**
-
-The core formula is based on three main variables: the number of pulses counted, the
-encoder's PPR (Pulses per Revolution), and the time interval over which the pulses were
-counted.
-
-
+The core formula is based on three main variables: the number of pulses counted, the encoder's PPR (Pulses Per Revolution), and the time interval over which the pulses were counted.<br>
 The general formula is:
-**Formula**
-**RPM=(𝑁𝑜 𝑜𝑓 𝑃𝑢𝑙𝑠𝑒𝑠/ 𝑃𝑃𝑅) × (60/𝑇𝑖𝑚𝑒 𝐼𝑛𝑡𝑒𝑟𝑣𝑎𝑙 𝑖𝑛 1 𝑆𝑒𝑐𝑜𝑛𝑑)**
+![*formula* ](images/formula.png)<br>
+-	Number of Pulses (Count): This is the total number of pulses that the Arduino's interrupt service routine (ISR) counts during the measurement period. This value is directly proportional to the motor's speed the faster the motor spins, the more pulses the encoder generates.
+-	PPR (Pulses Per Revolution): This is a fixed value determined by the encoder's hardware.  In project uses an encoder with 20 PPR, meaning it produces 20 pulses for every full rotation of the motor shaft.
+-	Time Interval in Seconds: This is the fixed duration during which the Arduino counts the pulses. In code sets the interval to 1000 milliseconds, which is equal to a second.<br>
 
--  Number of Pulses (Count): This is the total number of pulses that the Arduino's
-interrupt service routine (ISR) counts during the measurement period. This value is directly
-proportional to themotor's speed—the faster themotor spins, the more pulses the
-encoder generates.
-- PPR (Pulses Per Revolution): This is a fixed value determined by the encoder's
-hardware. Your project uses an encoder with 20 PPR, m eaning it produces 20 pulses for
-every full rotation of the motor shaft.
-- Time Interval in Seconds: This is the fixed duration during which the Arduino
-counts the pulses. Your code sets the interval to 1000 milliseconds, which is equal to 1
-second.
+**Formula Works:**
+The formula works by first converting the pulses into revolutions and then scaling that result to a minute.
+1.	Pulses to Revolutions: The first part of the formula converts the total pulse count into revolutions.<br>
+![*formula2* ](images/formula2.PNG)<br>
+The Simplified Formula using Code
+Because code uses of 1000ms (a second) Interval and a PPR of 20, the formula simplifies significantly.
+In short Formula for,                Pulses=   (Number of  RPM)/3<br>
+In short Formula for,              RPM= Pulses ×3<br>
 
-**How It Works:**
-The formula works by first converting the pulses into revolutions and then scaling that
-result to a minute.
-- Pulses to Revolutions: The first part of the formula converts the total pulse count
-into revolutions.
-**Revolutions=PPRNumber of Pulses**
-- For example, if the Arduino counts 100 pulses, it divides that by the PPR of 20:
-**20 pulses/revolution 100 pulses =5 revolutions**
-- This means the motor completed 5 full revolutions in the measurement period.
+An Incremental Encoder is a sensor that translates mechanical motion into an electronic signal.This project uses an Incremental encoder, which generates a series of digital pulses as its shaft rotates. These pulses are counted to determine the motor's speed.<br>
+![*image* ](images/a.png)
+![*image* ](images/encoder.jpg)![*image* ](images/lineinfo.jpg)<br>
+This experiment design only for INCREMENTAL ENCODER CHANNEL (A) PIN
+The core of an incremental encoder's operation lies in its simple design: a rotating disk with precisely spaced holes or slots, and an optical sensor consisting of an IR Emitter and an IR Receiver.<br>
+•	**IR Emitter**: An infrared LED that sends out a beam of infrared light.<br>
+•	**IR Receiver:** A phototransistor that detects the infrared light.<br>
+As the encoder's disk rotates with the motor's shaft, the holes allow the IR light to pass through, creating a digital pulse (HIGH signal) for each hole detected. The number of holes on the disk determines the Pulses Per Revolution (PPR). In your code, the PPR is set to 20, meaning the encoder generates 20 pulses for every full revolution of the motor shaft.
+Because the encoder's raw output is often a weak or "noisy" signal, it must be conditioned before the Arduino can read it reliably. This is where the Op-Amp and NPN transistor come in:<br>
+•	**NPN Transistor**: It acts as a switch and amplifier, allowing the Arduino's low-power signal to drive the motor and other components. The transistor ensures a strong, reliable signal is sent to the Arduino’s interrupt pin.<br>
+The Arduino then uses a hardware interrupt to count the pulses. An interrupt is a highly efficient method where the Arduino's hardware automatically executes a specific function, the Interrupt Service Routine (ISR), every time a pulse is detected on its designated interrupt pin (digital pin 2 and 3). This prevents the Arduino from missing pulses, which is crucial for accurate speed measurement.
+The final RPM is calculated based on the number of pulses counted within a specific time interval (give 1 second in code). This calculation provides a direct and accurate measurement of the motor's speed, which is then displayed on the LCD.<br>
+<br>
+**Applications:**
+1.	Robotics: Used in robotic arms and mobile robots to monitor the precise angle and speed of joints and wheels, ensuring accurate movement and positioning.
+2.	CNC Machines: for precision control of cutting tools and workpieces, ensuring that movements are accurate and repeatable.
+3.	Industrial Automation: Used on conveyor belts to measure the speed of materials, on assembly lines for synchronized movements, and in packaging machinery to control the rate of production.
+4.	Printers and Plotters: Encoders are used to control the movement of the print head carriage, ensuring that text and images are printed in the correct position.
+5.	Automotive Industry: Anti-lock braking systems (ABS) to measure wheel speed and in power steering systems to detect the rotation of the steering wheel.
 
-2  Revolutions to RPM: The second part of the formula converts the measurement
-from"revolutions per second" to "revolutions per minute."
-**RPM=Revolutions × Time Interval in Seconds 60**
-- Since your time interval is 1 second, the calculation is:
-
-![*image* ](images/fig4.PNG)<br>**Fig 4**
-Depending on which channel (A or B) indicates a rising edge first, the direction can also
-be detected. Single channel encoders only have the channel A output and can only
-output a single pulse train
-
-In the Experiment, we are using the encoder's single signal wire (Channel A) and
-connecting it to two different input pins on the Arduino (PD2 and PD3). This setup means
-the Arduino gets the same pulse signal twice, allowing the system to focus only on
-measuring the total amount of movement (the motor's speed). because we lack the
-second, offset signal (Channel B) needed for quadrature decoding, this configuration
-cannot determine the direction the motor is spinning.
-
-Disk rotates with the motor's shaft, the holes allow the IR light to pass through, creating a
-digital pulse (HIGH signal) for each hole detected. The number of holes on the disk
-determines the Pulses Per Revolution (PPR). In your code, the PPR is set to 20, meaning
-the encoder generates 20 pulses for every full revolution of the motor shaft.
-
-Because the encoder's raw output is often a weak or "noisy" signal, it must be
-conditioned before the Arduino can read it reliably. This is where NPN transistor come in:
-
-NPN Transistor: It acts as a switch and amplifier, allowing the Arduino's low-power signal
-to drive the motor and other components. The transistor ensures a strong, reliable signal
-is sent to the Arduino’ s interrupt pin.
-
-The Arduino then uses a hardware interrupt to count the pulses. An interrupt is a highly
-efficient method where the Arduino's hardware automatically executes a specific
-function, the Interrupt Service Routine (ISR), every time a pulse is detected on its
-designated interrupt pin (digital pin 2 & 3). This prevents the Arduino frommissing pulses,
-which is crucial for accurate speed measurement.
-
-The final RPM is calculated based on the number of pulses counted within a specific time
-interval (give 1 second in code). This calculation provides a direct and accurate
-measurement of the motor's speed, which is then displayed on the LCD.
