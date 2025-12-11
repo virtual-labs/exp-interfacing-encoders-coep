@@ -1,0 +1,60 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "How does the potentiometer affect the encoder’s output?",
+      "answers": {
+        "a": "It directly changes the PPR value.",
+        "b": "It controls the motor's speed, which in turn changes the rate at which the encoder generates pulses.",
+        "c": "It provides a constant voltage to the encoder, regardless of the motor's speed.",
+        "d": "It has no effect on the encoder."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What would happen if the volatile keyword was removed from the count variable?",
+      "answers": {
+        "a": "The code would not compile.",
+        "b": "The RPM reading would be inaccurate or erratic, especially at high speeds, as the compiler might optimize the variable incorrectly.",
+        "c": "The motor would not turn on.",
+        "d": "The LCD would stop displaying text."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the purpose of the attachInterrupt() function in the setup()?",
+      "answers": {
+        "a": "It starts the main loop of the program.",
+        "b": "It connects the LCD to the Arduino.",
+        "c": "It assigns a function to be executed automatically when a specific event occurs on a designated pin.",
+        "d": "It resets the Arduino to its default settings."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "If you used an absolute encoder in this project, what would be the primary difference in the code's logic?",
+      "answers": {
+        "a": "The code would need a more complex calculation to determine the exact position of the shaft, not just the change in position.",
+        "b": "The attachInterrupt() function would not be needed.",
+        "c": "The loop() function would be replaced with a different function.",
+        "d": "The LCD would no longer be necessary."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The interval variable is set to 1000ms. What is the primary benefit of using this value compared to a smaller value like 200ms?",
+      "answers": {
+        "a": "It makes the code simpler to write.",
+        "b": "It provides more stable and accurate RPM readings, as it averages the pulses over a longer period.",
+        "c": "It allows the motor to run faster.",
+        "d": "It reduces the power consumption of the circuit."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+<title>Interfacing of Encoder</title>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="lib/jquery.js"></script>
+
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href=" https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/buttonStyle.css">
+<link rel="stylesheet" href="css/mainPage.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/transducer.css">
+<link rel="stylesheet" href="css/result.css">
+<link rel="stylesheet" href="css/toastr.min.css">
+<style type="text/css">
+	
+#body {
+	 overflow-x: hidden;
+}
+
+#code-header {
+            margin: 0;
+            padding: 10px;
+            background-color: #5353535d;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            border-radius: 5px;
+        }
+#start, #pause, #reset {
+			margin-right: 10px;
+			padding: 10px;
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		#reset{
+			background-color: #ce513b;
+		}
+</style>
+</head>
+
+<body id="body" bgproperties="fixed">
+
+	<header>
+		<img class="Coeplogo" src='images/COEPlogo.png' /> 
+		<img class="VlabLogo" src='images/vlablogo.jpg' /> 
+		<span id="colgName">COEP TECHNOLOGICAL UNIVERSITY, PUNE</span>
+	</header>
+	
+	
+	<div  class="row container-fluid" id="main-div1" style="margin : 5px 1px"">
+	<div class="col-sm-8" id="buttonDiv">
+	</div>
+	<div class="col-sm-1" id="buttonDiv">
+<!-- 	<button type="button" class="btn btn-info button3"  id="refresh" data-toggle="modal"><i class="fa fa-refresh"></i> <b>REFRESH</b></button> -->
+	</div>
+	<div class="col-sm-2" id="buttonDiv">
+<!-- 	<button type="button" class="btn btn-danger button5" id="procedure" data-toggle="modal" data-target="#readProcedureModal"><b>READ PROCEDURE</b></button> -->
+	</div>
+	<div class="col-sm-1" id="buttonDiv">
+	<h5 id="counter" class=" btn1 timerStyle" >00:00:00</h5>
+	<button type="button" class="btn btn-danger  "  id="report" style="    margin-bottom: 26px;"  hidden>Download report </button> 
+	
+	</div>
+	<div>
+		</div>
+	</div>
+	<div class="row container-fluid"  style="margin-top: -20px" id="mainDiv">
+
+		<div class="col-lg-7" id="canvas">
+			<div class="panel panel-primary">
+				<div class="panel-heading " id="panelHeading2">
+					<center id="centerText1">DIAGRAM</center>
+				</div>
+				<div class="panel-body" id="plot" hidden> 
+
+				</div>
+				<div class="panel-body" style="padding: 0px;" id="canvas-div1">
+				<img src="images/ardino.png" style="width: 100%;height:100%"   class="img-fluid" ></img>
+				</div>
+				<div class="panel-body" style="padding: 0px;" id="canvas-div">
+				<div class="row">
+				<div class="col-lg-12">
+				<p id="message" style="color:red; font-weight:bold;"></p>
+				</div>
+				
+				</div>
+				
+				</div>
+				
+<div class="scope-body" hidden>
+  <div class="scope-screen">
+    <canvas id="oscCanvas" width="185" height="100"></canvas>
+    <div class="v-label">12.0 V</div>
+    <div class="t-label">10.0 mA</div>
+  </div>
+<!--   <div class="terminals"> -->
+<!--     <div class="terminal red"></div> -->
+<!--     <div class="terminal black"></div> -->
+<!--   </div> -->
+</div>
+				
+			</div>
+		</div>
+		<div class="col-lg-5" id="main-div">
+			<div class="panel panel-primary">
+				<div class="panel-heading " id="panelHeading1">
+					<center id="centerText2">BASIC KNOWLEDGE</center>
+				</div>
+				<div class="panel-body" id="main-div-conf">
+<!-- 				code will be rendered here -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">			
+				 <h4 class="modal-title" id="ModelTitle1">Message box</h4>
+				 <button type="button" class="close" data-dismiss="modal" style="color:#fff;">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p id="modelMsg"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" id = "nextPage" data-dismiss="modal" >Okay</button>
+			</div>
+		</div>
+	</div>
+</div>	
+
+<!-- procedure -->
+
+<div id="readProcedureModal" class="modal fade" role="dialog">
+  <div class="modal-dialog  modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><center><b>PROCEDURE</b></center></h4>
+      </div>
+      <div class="modal-body">
+    
+<center id="modelTitle"><b>Configuration</b></center>
+ <ol>
+<li>Select Input Pin For Switch.</li>
+<li>Select Output Pin For LED.</li>
+<li>Select Switch Configuration.</li>
+<li>Select LED Configuration.</li>
+<li>Click on "GENERATE CODE" button to generate code.</li>
+<li>Click on "COMPILE" button to compile code.</li>
+<li>Click on "EXECUTE" button to execute code and goto mimic.</li>
+<li>If you want to download code click on "DOWNLOAD" button.</li>
+<li>The MIMIC will open on left side of screen.</li>
+</ol>
+
+<center id="modelTitle"><b>Mimic</b></center>
+<ol>
+<li>Connect the Output Pin to the Anode.</li>
+<li>Click on the cathode terminal (red circle) and then click on the resistor terminal (red circle) to connect the cathode with the resistor or vice versa.</li>
+<li>Click on the selected input pin terminal (blue circle) and then click on the switch terminal (blue circle) to connect the input pin with the switch terminal or vice versa.</li>
+<li>Click on the "Check Connection" button.</li>
+<li>If connection is wrong, click on "Reset Connection" button and follow steps 1, 2, 3, and 4 again.</li>
+<li>If connection is successful, click on Switch available on the screen with black color and hold the switch for a few seconds. </li>
+<li>While holding the switch, Output LED is on. Observe the square wave graph to see how the output changes until you complete the observation.</li>
+<li>Click on the "REFRESH" button to re-execute the experiment.</li>
+</ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+    document.getElementById('refresh').addEventListener('click', function() {
+        location.reload();
+    });
+</script>
+	
+	<footer> Copyrights &copy; COEP - Virtual Lab </footer>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+<script type="text/javascript" src="lib/raphael.js"></script>
+<script type="text/javascript" src="lib/raphael.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="src/questionJson.js"></script>
+<script type="text/javascript" src="src/questions.js"></script>
+<script type="text/javascript" src="src/configuration.js"></script>
+<script type="text/javascript" src="src/mimic.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="src/toastr.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="src/timer.js"></script>
+<script src="src/result.js"></script>
+
+<script>
+    toastr.options = {
+        'closeButton': true,
+        'debug': false,
+        'newestOnTop': false,
+        'progressBar': true,
+        'positionClass': 'toast-bottom-right',
+        'preventDuplicates': false,
+        'showDuration': '1000',
+        'hideDuration': '1000',
+        'timeOut': '5000',
+        'extendedTimeOut': '1000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut',
+        'margin-bottom':'50%'
+    }
+</script>
+
+<script>
+
+$(document).ready(function() {
+  //	$("#canvas-div1").html("");
+ 	//mimic();
+});
+  // Simple Swal function
+  function showSwal(message, type = 'info', title = 'Status') {
+	  Swal.fire({
+	      title: title,
+	      text: message,
+	      icon: type,   // success | error | warning | info | question
+	      confirmButtonText: "OK",
+	    	  customClass: {
+	    	        popup: 'my-swal-popup'   // apply custom class
+	    	    }
+	    });
+  }
+</script>
+<script>
+$(document).ready(function() {
+ 
+});
+</script>
+</html>
